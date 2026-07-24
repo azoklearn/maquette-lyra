@@ -1,0 +1,439 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lyra Motors · Import automobile sur mesure · Europe & USA</title>
+<meta name="description" content="Lyra Motors importe pour vous les véhicules européens et américains de vos rêves. Recherche, vérification, transport, homologation et livraison clé en main partout en France." />
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- ============================ SPRITE SVG (icônes + silhouettes) ============================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-euro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 6a6 6 0 1 0 0 12M5 10h8M5 14h8"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13l2 2 3-3"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4"/><path d="m11 11 8 8M16 16l2-2M19 19l2-2"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6 6.6.6-5 4.3 1.5 6.4L12 16l-5.9 3.3L7.6 13l-5-4.3L9.1 8z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15a8 8 0 1 1 16 0"/><path d="m12 15 4-4"/><circle cx="12" cy="15" r="1"/></symbol>
+    <symbol id="i-fuel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M3 20h13"/><path d="M14 9h3l2 2v6a2 2 0 0 1-4 0v-3h-1"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9h16M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-cog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h6l2 3-2 3H7l-2-3z" transform="translate(2 2) scale(.7)"/><path d="M12 4v2M12 18v2M4.9 7l1.7 1M17.4 16l1.7 1M19.1 7l-1.7 1M6.6 16l-1.7 1"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.5A3.5 3.5 0 0 1 12 7a3.5 3.5 0 0 1 7 3.5C19 15.6 12 20 12 20Z"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="7.5" r="1.3"/></symbol>
+    <symbol id="i-road" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21 9 3M18 21 15 3M12 6v2M12 12v2M12 18v2"/></symbol>
+    <symbol id="i-anchor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v13M5 12H3a9 9 0 0 0 18 0h-2M8 11H5M19 11h-3"/></symbol>
+
+    <!-- Silhouettes véhicules (profil) -->
+    <symbol id="car-coupe" viewBox="0 0 360 150">
+      <path d="M16 116 L20 98 C40 92 62 90 82 88 L122 80 C132 62 152 50 184 48 C216 46 248 54 272 68 L308 86 C328 92 340 100 342 116 Z" fill="currentColor"/>
+      <path d="M122 80 C132 62 152 50 184 48 C216 46 248 54 272 68" fill="none" stroke="rgba(199,154,85,.55)" stroke-width="2.4"/>
+      <circle cx="96" cy="116" r="30" fill="#0a1720"/><circle cx="96" cy="116" r="30" fill="none" stroke="rgba(199,154,85,.5)" stroke-width="2"/><circle cx="96" cy="116" r="9" fill="none" stroke="rgba(199,154,85,.7)" stroke-width="2"/>
+      <circle cx="278" cy="116" r="30" fill="#0a1720"/><circle cx="278" cy="116" r="30" fill="none" stroke="rgba(199,154,85,.5)" stroke-width="2"/><circle cx="278" cy="116" r="9" fill="none" stroke="rgba(199,154,85,.7)" stroke-width="2"/>
+    </symbol>
+    <symbol id="car-suv" viewBox="0 0 360 160">
+      <path d="M14 122 L18 96 C36 90 54 88 72 87 L96 66 C106 58 120 54 140 54 L214 54 C236 54 252 60 262 74 L300 84 C324 90 340 100 344 122 Z" fill="currentColor"/>
+      <path d="M96 66 C106 58 120 54 140 54 L214 54 C236 54 252 60 262 74" fill="none" stroke="rgba(199,154,85,.55)" stroke-width="2.4"/>
+      <circle cx="92" cy="122" r="31" fill="#0a1720"/><circle cx="92" cy="122" r="31" fill="none" stroke="rgba(199,154,85,.5)" stroke-width="2"/><circle cx="92" cy="122" r="9" fill="none" stroke="rgba(199,154,85,.7)" stroke-width="2"/>
+      <circle cx="282" cy="122" r="31" fill="#0a1720"/><circle cx="282" cy="122" r="31" fill="none" stroke="rgba(199,154,85,.5)" stroke-width="2"/><circle cx="282" cy="122" r="9" fill="none" stroke="rgba(199,154,85,.7)" stroke-width="2"/>
+    </symbol>
+    <symbol id="car-pickup" viewBox="0 0 380 160">
+      <path d="M12 122 L16 94 L74 92 L100 66 C104 62 110 60 118 60 L182 60 C190 60 194 64 196 72 L200 92 L344 92 L360 122 Z" fill="currentColor"/>
+      <path d="M74 92 L100 66 C104 62 110 60 118 60 L182 60 C190 60 194 64 196 72 L200 92" fill="none" stroke="rgba(199,154,85,.55)" stroke-width="2.4"/>
+      <path d="M200 92 L344 92 L360 122" fill="none" stroke="rgba(199,154,85,.3)" stroke-width="2"/>
+      <circle cx="96" cy="122" r="32" fill="#0a1720"/><circle cx="96" cy="122" r="32" fill="none" stroke="rgba(199,154,85,.5)" stroke-width="2"/><circle cx="96" cy="122" r="10" fill="none" stroke="rgba(199,154,85,.7)" stroke-width="2"/>
+      <circle cx="300" cy="122" r="32" fill="#0a1720"/><circle cx="300" cy="122" r="32" fill="none" stroke="rgba(199,154,85,.5)" stroke-width="2"/><circle cx="300" cy="122" r="10" fill="none" stroke="rgba(199,154,85,.7)" stroke-width="2"/>
+    </symbol>
+    <symbol id="car-sedan" viewBox="0 0 360 150">
+      <path d="M16 114 L20 94 C42 89 64 87 84 85 L118 80 C130 58 152 50 186 50 C220 50 244 58 256 80 L320 86 C338 90 346 100 344 114 Z" fill="currentColor"/>
+      <path d="M118 80 C130 58 152 50 186 50 C220 50 244 58 256 80" fill="none" stroke="rgba(199,154,85,.55)" stroke-width="2.4"/>
+      <circle cx="92" cy="114" r="29" fill="#0a1720"/><circle cx="92" cy="114" r="29" fill="none" stroke="rgba(199,154,85,.5)" stroke-width="2"/><circle cx="92" cy="114" r="9" fill="none" stroke="rgba(199,154,85,.7)" stroke-width="2"/>
+      <circle cx="272" cy="114" r="29" fill="#0a1720"/><circle cx="272" cy="114" r="29" fill="none" stroke="rgba(199,154,85,.5)" stroke-width="2"/><circle cx="272" cy="114" r="9" fill="none" stroke="rgba(199,154,85,.7)" stroke-width="2"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header over-hero">
+  <div class="container nav">
+    <a href="index.html" class="brand" aria-label="Lyra Motors, accueil">
+      <img class="brand__logo" src="assets/img/logo.png" alt="Lyra Motors" />
+      <span class="brand__word">
+        <span class="brand__name">Lyra Motors</span>
+        <span class="brand__sub">Import · Europe & USA</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a class="nav__link is-active" href="index.html">Accueil</a>
+      <a class="nav__link" href="vehicules.html">Véhicules</a>
+      <a class="nav__link" href="importation.html">Importation</a>
+      <a class="nav__link" href="contact.html">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a href="contact.html" class="btn btn--accent">Parler de mon projet <svg class="arw" width="16" height="16"><use href="#i-arrow"/></svg></a>
+      <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="mobile-menu">
+  <a class="m-link" href="index.html"><span>Accueil</span><span class="idx">01</span></a>
+  <a class="m-link" href="vehicules.html"><span>Véhicules</span><span class="idx">02</span></a>
+  <a class="m-link" href="importation.html"><span>Importation</span><span class="idx">03</span></a>
+  <a class="m-link" href="contact.html"><span>Contact</span><span class="idx">04</span></a>
+  <div class="mobile-menu__foot">
+    <a href="contact.html" class="btn btn--accent btn--block btn--lg">Parler de mon projet <svg class="arw" width="16" height="16"><use href="#i-arrow"/></svg></a>
+  </div>
+</div>
+
+<main>
+  <!-- ============================ HERO ============================ -->
+  <section class="hero">
+    <div class="hero__media" aria-hidden="true">
+      <!-- Photo du hero -->
+      <div class="hero__photo loaded" data-src="assets/img/hero.png" style="background-image:url('assets/img/hero.png')"></div>
+      <!-- Scène de repli : port au lever du jour + véhicules importés -->
+      <div class="hero__scene">
+        <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Voitures importées sur un quai portuaire au lever du jour, cargo à l'horizon">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0e2536"/><stop offset=".42" stop-color="#33505f"/>
+              <stop offset=".68" stop-color="#9c7a5b"/><stop offset=".84" stop-color="#dcb083"/><stop offset="1" stop-color="#efce9c"/>
+            </linearGradient>
+            <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#fff2d6"/><stop offset=".4" stop-color="#f6d29a" stop-opacity=".8"/><stop offset="1" stop-color="#f6d29a" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d9b184"/><stop offset=".12" stop-color="#5c6f72"/>
+              <stop offset=".5" stop-color="#183a4e"/><stop offset="1" stop-color="#0b2131"/>
+            </linearGradient>
+            <linearGradient id="quay" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0c2130"/><stop offset="1" stop-color="#081420"/>
+            </linearGradient>
+            <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#e9c79a" stop-opacity="0"/><stop offset=".5" stop-color="#e9c79a" stop-opacity=".8"/><stop offset="1" stop-color="#e9c79a" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Ciel -->
+          <g data-depth="0.15">
+            <rect x="0" y="0" width="1600" height="640" fill="url(#sky)"/>
+            <circle cx="1080" cy="520" r="360" fill="url(#sun)"/>
+            <circle cx="1080" cy="520" r="66" fill="#ffe9c0"/>
+            <ellipse cx="380" cy="230" rx="260" ry="26" fill="#e9c79a" opacity=".10"/>
+            <ellipse cx="640" cy="150" rx="200" ry="18" fill="#e9c79a" opacity=".08"/>
+          </g>
+
+          <!-- Port au loin : grues, cargo, conteneurs -->
+          <g data-depth="0.4" opacity=".92">
+            <!-- grues portiques -->
+            <g fill="none" stroke="#0f2a3b" stroke-width="5" opacity=".8">
+              <path d="M120 560 V430 H70 V560 M95 430 V395 H320 M95 430 H300 M300 430 V560 M180 560 V440 M250 560 V440 M95 395 L130 360 H300"/>
+              <path d="M360 560 V450 H320 V560 M340 450 V420 H520 M340 450 H505 M505 450 V560 M420 560 V458 M475 560 V458"/>
+            </g>
+            <!-- cargo porte-conteneurs -->
+            <g transform="translate(560 430)">
+              <path d="M0 90 L40 150 L760 150 L800 96 L800 78 L0 78 Z" fill="#0c2735"/>
+              <!-- pile de conteneurs -->
+              <g opacity=".95">
+                <rect x="70" y="10" width="620" height="70" fill="#123043"/>
+                <rect x="90" y="-24" width="120" height="36" fill="#7a4a34"/><rect x="216" y="-24" width="120" height="36" fill="#2f5064"/>
+                <rect x="342" y="-24" width="120" height="36" fill="#8a5f2f"/><rect x="468" y="-24" width="120" height="36" fill="#274a5c"/>
+                <rect x="150" y="-56" width="120" height="30" fill="#385a5f"/><rect x="404" y="-56" width="120" height="30" fill="#6b4530"/>
+                <rect x="700" y="-40" width="70" height="120" fill="#0e2938"/><rect x="716" y="-70" width="30" height="34" fill="#e9c79a" opacity=".5"/>
+              </g>
+            </g>
+            <!-- reflets -->
+            <g opacity=".4" fill="#dcb083"><rect x="900" y="662" width="360" height="3"/><rect x="960" y="678" width="220" height="2"/><rect x="1000" y="694" width="150" height="2"/></g>
+          </g>
+
+          <!-- Mer -->
+          <rect x="0" y="620" width="1600" height="120" fill="url(#sea)"/>
+          <g opacity=".18" fill="#e9c79a"><rect x="0" y="636" width="1600" height="2"/><rect x="0" y="662" width="1600" height="2"/><rect x="0" y="690" width="1600" height="2"/></g>
+
+          <!-- Quai -->
+          <rect x="0" y="726" width="1600" height="174" fill="url(#quay)"/>
+          <line x1="0" y1="726" x2="1600" y2="726" stroke="#1d4257" stroke-width="2" opacity=".7"/>
+
+          <!-- Véhicules importés au premier plan -->
+          <g data-depth="0.9" color="#0c1f2b">
+            <ellipse cx="360" cy="812" rx="230" ry="20" fill="#000" opacity=".28"/>
+            <use href="#car-pickup" x="150" y="690" width="430" height="181"/>
+          </g>
+          <g data-depth="1.15" color="#0a1a26">
+            <ellipse cx="880" cy="828" rx="250" ry="22" fill="#000" opacity=".32"/>
+            <use href="#car-coupe" x="640" y="712" width="470" height="196"/>
+          </g>
+          <g data-depth="1.35" color="#0b1d29">
+            <ellipse cx="1350" cy="820" rx="220" ry="20" fill="#000" opacity=".30"/>
+            <use href="#car-sedan" x="1160" y="702" width="420" height="175"/>
+          </g>
+
+          <!-- Ambiance -->
+          <rect x="0" y="0" width="1600" height="900" fill="url(#sun)" opacity=".06"/>
+        </svg>
+      </div>
+    </div>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <p class="eyebrow hero__eyebrow" data-stagger="0.06"><span class="reveal">Import automobile · Europe & USA</span></p>
+      <h1 data-stagger="0.09">
+        <span class="line-mask reveal"><span>Le véhicule de vos rêves,</span></span>
+        <span class="line-mask reveal"><span>importé <em class="hl serif-italic">sans frontières.</em></span></span>
+      </h1>
+      <p class="hero__sub reveal" style="--d:.35s">Nous trouvons, vérifions et importons pour vous les voitures européennes et américaines les plus rares, livrées clé en main, partout en France.</p>
+      <div class="hero__cta reveal" style="--d:.45s">
+        <a href="contact.html" class="btn btn--accent btn--lg" data-magnetic>Parler de mon projet <svg class="arw" width="16" height="16"><use href="#i-arrow"/></svg></a>
+        <a href="vehicules.html" class="btn btn--ghost btn--lg">Voir les véhicules <svg class="arw" width="16" height="16"><use href="#i-arrow-r"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ IMPORTATION SUR MESURE ============================ -->
+  <section class="section pillars">
+    <div class="container">
+      <div class="pillars__grid">
+        <div class="pillars__intro reveal reveal--left">
+          <p class="eyebrow">Importation sur mesure</p>
+          <h2>Trouvez exactement le véhicule que vous voulez. <em class="hl serif-italic">Sans compromis.</em></h2>
+          <p>Nous recherchons, vérifions et importons pour vous des véhicules européens et américains, en toute sécurité, du premier échange à la remise des clés.</p>
+          <a href="importation.html" class="btn btn--ghost">Découvrir la méthode <svg class="arw" width="16" height="16"><use href="#i-arrow-r"/></svg></a>
+        </div>
+
+        <div class="feature-list" data-stagger="0.1">
+          <article class="feature reveal">
+            <div class="feature__ico"><svg><use href="#i-shield"/></svg></div>
+            <div><span class="feature__num">01</span><h3>Véhicules rares & mieux équipés</h3><p>Accédez à des modèles introuvables en France ou à des finitions bien plus complètes. Nous sélectionnons des voitures uniques, taillées pour vos attentes.</p></div>
+          </article>
+          <article class="feature reveal">
+            <div class="feature__ico"><svg><use href="#i-euro"/></svg></div>
+            <div><span class="feature__num">02</span><h3>Des prix plus avantageux</h3><p>Profitez de tarifs souvent plus attractifs qu'en France, même importation comprise. Nous optimisons chaque étape pour le meilleur rapport qualité-prix.</p></div>
+          </article>
+          <article class="feature reveal">
+            <div class="feature__ico"><svg><use href="#i-doc"/></svg></div>
+            <div><span class="feature__num">03</span><h3>Démarches 100 % prises en charge</h3><p>Recherche, vérification, transport, homologation, immatriculation : on s'occupe de tout. Vous n'avez rien à gérer, on vous accompagne de A à Z.</p></div>
+          </article>
+          <article class="feature reveal">
+            <div class="feature__ico"><svg><use href="#i-key"/></svg></div>
+            <div><span class="feature__num">04</span><h3>Livraison clé en main</h3><p>Recevez votre véhicule prêt à rouler, directement chez vous, partout en France. Simple, sécurisé, sans surprise : vous profitez, on gère le reste.</p></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CATÉGORIES ============================ -->
+  <section class="section cats">
+    <div class="container">
+      <div class="section-head center reveal">
+        <p class="eyebrow center">Notre terrain de jeu</p>
+        <h2>Quel que soit votre projet, nous avons le véhicule qu'il vous faut.</h2>
+        <p>Du bolide américain à la citadine du quotidien, nous sourçons chaque catégorie avec la même exigence.</p>
+      </div>
+
+      <div class="cats__grid" data-stagger="0.09">
+        <article class="cat reveal">
+          <div class="cat__bg"><svg viewBox="0 0 700 460" preserveAspectRatio="xMidYMid slice" color="#f0e2c6" aria-hidden="true"><defs><linearGradient id="cg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c3a4f"/><stop offset="1" stop-color="#0a1a27"/></linearGradient></defs><rect width="700" height="460" fill="url(#cg1)"/><circle cx="470" cy="140" r="240" fill="#c8934e" opacity=".2"/><ellipse cx="360" cy="378" rx="300" ry="26" fill="#000" opacity=".25"/><use href="#car-coupe" x="115" y="212" width="490" height="204"/></svg></div>
+          <span class="cat__scrim"></span>
+          <a href="vehicules.html" class="cat__more" aria-label="Voir la catégorie"><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+          <span class="cat__idx">01 · USA & RARES</span>
+          <h3>Sportives & GT</h3>
+          <p>Mustang, Corvette, Camaro, Porsche ou modèles rares : nous vous accompagnons dans la recherche et l'importation de véhicules passion.</p>
+          <div class="cat__tags"><span>Mustang</span><span>Corvette</span><span>911</span><span>Camaro</span></div>
+        </article>
+
+        <article class="cat reveal">
+          <div class="cat__bg"><svg viewBox="0 0 700 460" preserveAspectRatio="xMidYMid slice" color="#f0e2c6" aria-hidden="true"><defs><linearGradient id="cg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17384e"/><stop offset="1" stop-color="#0b2130"/></linearGradient></defs><rect width="700" height="460" fill="url(#cg2)"/><circle cx="470" cy="140" r="240" fill="#c8934e" opacity=".16"/><ellipse cx="360" cy="378" rx="300" ry="26" fill="#000" opacity=".25"/><use href="#car-sedan" x="115" y="214" width="490" height="204"/></svg></div>
+          <span class="cat__scrim"></span>
+          <a href="vehicules.html" class="cat__more" aria-label="Voir la catégorie"><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+          <span class="cat__idx">02 · HAUT DE GAMME</span>
+          <h3>SUV & berlines premium</h3>
+          <p>Audi, BMW, Mercedes, Porsche, Range Rover… Nous sélectionnons des véhicules haut de gamme selon vos critères et votre budget.</p>
+          <div class="cat__tags"><span>Audi</span><span>BMW</span><span>Mercedes</span><span>Range Rover</span></div>
+        </article>
+
+        <article class="cat reveal">
+          <div class="cat__bg"><svg viewBox="0 0 700 460" preserveAspectRatio="xMidYMid slice" color="#f0e2c6" aria-hidden="true"><defs><linearGradient id="cg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15364a"/><stop offset="1" stop-color="#091824"/></linearGradient></defs><rect width="700" height="460" fill="url(#cg3)"/><circle cx="480" cy="140" r="240" fill="#c8934e" opacity=".18"/><ellipse cx="360" cy="384" rx="300" ry="26" fill="#000" opacity=".25"/><use href="#car-pickup" x="105" y="206" width="510" height="215"/></svg></div>
+          <span class="cat__scrim"></span>
+          <a href="vehicules.html" class="cat__more" aria-label="Voir la catégorie"><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+          <span class="cat__idx">03 · PERSO & PRO</span>
+          <h3>4×4, pick-up & utilitaires</h3>
+          <p>Dodge RAM, Ford F-150, Ranger, Hilux ou modèles spécifiques : nous trouvons le véhicule adapté à vos besoins personnels ou professionnels.</p>
+          <div class="cat__tags"><span>RAM</span><span>F-150</span><span>Ranger</span><span>Hilux</span></div>
+        </article>
+
+        <article class="cat reveal">
+          <div class="cat__bg"><svg viewBox="0 0 700 460" preserveAspectRatio="xMidYMid slice" color="#f0e2c6" aria-hidden="true"><defs><linearGradient id="cg4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b3e55"/><stop offset="1" stop-color="#0c2433"/></linearGradient></defs><rect width="700" height="460" fill="url(#cg4)"/><circle cx="470" cy="140" r="240" fill="#c8934e" opacity=".16"/><ellipse cx="360" cy="380" rx="300" ry="26" fill="#000" opacity=".25"/><use href="#car-suv" x="115" y="210" width="490" height="210"/></svg></div>
+          <span class="cat__scrim"></span>
+          <a href="vehicules.html" class="cat__more" aria-label="Voir la catégorie"><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+          <span class="cat__idx">04 · DU QUOTIDIEN</span>
+          <h3>Véhicules du quotidien</h3>
+          <p>Citadines, compactes, SUV familiaux ou hybrides : nous vous aidons à trouver un véhicule fiable, bien équipé et au bon prix.</p>
+          <div class="cat__tags"><span>Citadines</span><span>Compactes</span><span>Familiales</span><span>Hybrides</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ GALERIE EN IMAGES ============================ -->
+  <section class="section gallery">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">En images</p>
+        <h2>Un aperçu de notre savoir-faire.</h2>
+        <p>De la sélection à la livraison, chaque véhicule est traité avec le même soin, de l'atelier jusqu'à votre allée.</p>
+      </div>
+      <div class="gallery__grid" data-stagger="0.08">
+        <a href="vehicules.html" class="gtile gtile--tall reveal">
+          <img src="https://images.pexels.com/photos/18108314/pexels-photo-18108314/free-photo-of-modern-expensive-cars-in-the-garage.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=900&amp;h=1200" alt="Véhicules premium alignés dans un showroom" loading="lazy" />
+          <div class="gtile__cap"><span class="k">Sélection premium</span><span class="t">Des véhicules triés sur le volet</span></div>
+        </a>
+        <div class="gtile reveal">
+          <img src="https://images.pexels.com/photos/30272173/pexels-photo-30272173/free-photo-of-sleek-supercars-exhibit-in-modern-museum.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=560" alt="Voitures d'exception exposées" loading="lazy" />
+          <div class="gtile__cap"><span class="k">Sportives & GT</span><span class="t">Modèles d'exception</span></div>
+        </div>
+        <div class="gtile reveal">
+          <img src="https://images.pexels.com/photos/22719123/pexels-photo-22719123/free-photo-of-cargo-ship-in-harbor-in-hamburg-in-germany.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=560" alt="Port et transport maritime des véhicules importés" loading="lazy" />
+          <div class="gtile__cap"><span class="k">Logistique</span><span class="t">Transport sécurisé</span></div>
+        </div>
+        <div class="gtile reveal">
+          <img src="https://images.pexels.com/photos/17632052/pexels-photo-17632052/free-photo-of-sports-car-on-display-in-dealership.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=560" alt="Voiture de sport préparée en concession" loading="lazy" />
+          <div class="gtile__cap"><span class="k">Préparation</span><span class="t">Livrées prêtes à rouler</span></div>
+        </div>
+        <div class="gtile reveal">
+          <img src="https://images.pexels.com/photos/36729855/pexels-photo-36729855/free-photo-of-happy-couple-buying-new-car-from-salesman-at-dealership.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=560" alt="Remise des clés à un client" loading="lazy" />
+          <div class="gtile__cap"><span class="k">Accompagnement</span><span class="t">De A à Z, avec vous</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROCESSUS (teaser) ============================ -->
+  <section class="section stripe">
+    <div class="container">
+      <div class="section-head reveal" style="max-width:760px">
+        <p class="eyebrow">Comment ça marche</p>
+        <h2>Un accompagnement de A à Z, <em class="hl serif-italic">vous n'avez rien à gérer.</em></h2>
+        <p>De la définition de votre projet à la livraison, chaque étape est prise en charge et sécurisée par nos soins.</p>
+      </div>
+      <div class="steps steps--4" data-stagger="0.08">
+        <div class="step reveal"><div class="step__n">01</div><h3>Votre projet</h3><p>On définit ensemble le modèle, le budget et vos critères précis.</p></div>
+        <div class="step reveal"><div class="step__n">02</div><h3>Sourcing & vérification</h3><p>Recherche sur nos réseaux Europe/USA, historique et inspection complète.</p></div>
+        <div class="step reveal"><div class="step__n">03</div><h3>Transport & homologation</h3><p>Achat sécurisé, acheminement assuré, dédouanement et homologation.</p></div>
+        <div class="step reveal"><div class="step__n">04</div><h3>Livraison clé en main</h3><p>Immatriculation faite, véhicule livré prêt à rouler chez vous.</p></div>
+      </div>
+      <div class="reveal" style="margin-top:2.5rem">
+        <a href="importation.html" class="btn btn--light">Voir le processus détaillé <svg class="arw" width="16" height="16"><use href="#i-arrow-r"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ AVIS CLIENTS ============================ -->
+  <section class="section reviews">
+    <div class="container">
+      <div class="reviews__head">
+        <div class="section-head reveal" style="margin-bottom:0">
+          <p class="eyebrow">Ils nous ont fait confiance</p>
+          <h2>Des projets menés jusqu'aux clés.</h2>
+        </div>
+        <div class="reviews__score reveal reveal--right">
+          <span class="big">4,9<span style="font-size:1.4rem;color:var(--ink-faint)">/5</span></span>
+          <div>
+            <div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <div style="font-family:var(--font-mono);font-size:.78rem;color:var(--ink-faint);margin-top:.35rem">Sur 210+ avis vérifiés</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee" style="--speed:64s">
+      <div class="marquee__track">
+        <article class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="review__text">« Je cherchais une <b>Mustang GT</b> introuvable ici. Trouvée aux US, vérifiée et livrée en 6 semaines. <b>Zéro stress</b>, tout était géré. »</p><div class="review__by"><div class="review__av">T</div><div class="review__meta"><div class="n">Thomas L.</div><div class="c">Lyon · Ford Mustang GT</div></div></div></article>
+        <article class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="review__text">« Un <b>RAM 1500</b> mieux équipé et moins cher qu'en concession française. L'équipe a tout pris en charge, homologation comprise. »</p><div class="review__by"><div class="review__av b">M</div><div class="review__meta"><div class="n">Marc D.</div><div class="c">Bordeaux · Dodge RAM 1500</div></div></div></article>
+        <article class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="review__text">« Transparence totale sur les coûts dès le départ. Ma <b>BMW M240i</b> allemande est arrivée nickel. Je recommande les yeux fermés. »</p><div class="review__by"><div class="review__av">S</div><div class="review__meta"><div class="n">Sophie R.</div><div class="c">Nantes · BMW M240i</div></div></div></article>
+        <article class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="review__text">« Accompagnement au top pour ma <b>Porsche 911</b>. Chaque étape expliquée, aucun mauvaise surprise. Du travail de pro. »</p><div class="review__by"><div class="review__av b">K</div><div class="review__meta"><div class="n">Karim B.</div><div class="c">Paris · Porsche 911 Carrera</div></div></div></article>
+      </div>
+    </div>
+    <div class="marquee marquee--rev" style="--speed:72s">
+      <div class="marquee__track">
+        <article class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="review__text">« Besoin pro : un <b>Ford F-150</b> pour l'entreprise. Sourcing rapide, prix maîtrisé et livraison sur site. Impeccable. »</p><div class="review__by"><div class="review__av">J</div><div class="review__meta"><div class="n">Julien P.</div><div class="c">Toulouse · Ford F-150</div></div></div></article>
+        <article class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="review__text">« Une <b>Audi RS6</b> avec la finition exacte que je voulais, impossible à trouver en France. Merci Lyra pour la patience et le sérieux. »</p><div class="review__by"><div class="review__av b">A</div><div class="review__meta"><div class="n">Aline F.</div><div class="c">Lille · Audi RS6 Avant</div></div></div></article>
+        <article class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="review__text">« Premier import et clairement pas le dernier. <b>Corvette C8</b> livrée immatriculée, prête à rouler. Équipe réactive et humaine. »</p><div class="review__by"><div class="review__av">N</div><div class="review__meta"><div class="n">Nicolas V.</div><div class="c">Marseille · Chevrolet Corvette C8</div></div></div></article>
+        <article class="review"><div class="stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="review__text">« Un <b>Range Rover</b> haut de gamme déniché en Allemagne. Suivi irréprochable, je savais où en était mon dossier à chaque instant. »</p><div class="review__by"><div class="review__av b">C</div><div class="review__meta"><div class="n">Claire M.</div><div class="c">Rennes · Range Rover Sport</div></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CTA FINAL ============================ -->
+  <section class="cta">
+    <div class="cta__glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="cta__inner reveal reveal--scale">
+        <p class="eyebrow center" style="justify-content:center;color:var(--bronze-2)">Votre projet commence ici</p>
+        <h2>Votre voiture, trouvée et livrée <em class="hl serif-italic">sans compromis.</em></h2>
+        <p>Décrivez-nous votre projet : nous nous occupons de tout : recherche, vérification, achat, importation et livraison en France. Un modèle précis ou une simple idée ? On vous accompagne à chaque étape.</p>
+        <div class="cta__badges"><span>Accompagnement complet</span><span>Véhicules vérifiés</span><span>Transparence totale des coûts</span></div>
+        <a href="contact.html" class="btn btn--accent btn--lg" data-magnetic>Parler de mon projet <svg class="arw" width="16" height="16"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a href="index.html" class="brand" aria-label="Lyra Motors">
+          <img class="brand__logo" src="assets/img/logo.png" alt="Lyra Motors" />
+          <span class="brand__word"><span class="brand__name">Lyra Motors</span><span class="brand__sub">Import · Europe & USA</span></span>
+        </a>
+        <p class="footer__about">L'import automobile sur mesure. Nous trouvons, vérifions et livrons les véhicules européens et américains les plus rares, clé en main partout en France.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="12" height="12" rx="4"/><circle cx="9" cy="9" r="3"/><circle cx="13" cy="5" r=".6" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 4h2V1h-2a3 3 0 0 0-3 3v2H6v3h2v7h3V9h2l1-3h-3V4a0 0 0 0 1 0 0z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="14" height="10" rx="3"/><path d="M8 7l3 2-3 2z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <div class="footer__links"><a href="index.html">Accueil</a><a href="vehicules.html">Véhicules</a><a href="importation.html">Importation</a><a href="contact.html">Contact</a></div>
+      </div>
+      <div>
+        <h4>Catégories</h4>
+        <div class="footer__links"><a href="vehicules.html">Sportives & GT</a><a href="vehicules.html">SUV & berlines</a><a href="vehicules.html">Pick-up & 4×4</a><a href="vehicules.html">Quotidien</a></div>
+      </div>
+      <div class="footer__contact">
+        <h4>Contact</h4>
+        <div class="footer__links">
+          <a href="mailto:contact@lyramotors.fr"><svg width="16" height="16" style="display:inline;vertical-align:-2px;margin-right:6px"><use href="#i-mail"/></svg>contact@lyramotors.fr</a>
+          <a href="tel:+33600000000"><svg width="16" height="16" style="display:inline;vertical-align:-2px;margin-right:6px"><use href="#i-phone"/></svg>+33 6 00 00 00 00</a>
+        </div>
+        <div class="line" style="margin-top:1rem">Retrouvez tout notre stock sur<br><a href="vehicules.html" class="link-arrow" style="color:var(--bronze-2)">leboncoin pro <svg class="arw" width="14" height="14"><use href="#i-arrow"/></svg></a></div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="fmono">© <span data-year>2026</span> Lyra Motors · Tous droits réservés</span>
+      <span class="fmono">Mentions légales · CGV · Confidentialité</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
