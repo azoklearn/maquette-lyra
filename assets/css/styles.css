@@ -412,6 +412,7 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
   align-items: flex-end;
   overflow: hidden;
   color: var(--on-dark);
+  background: var(--brand-deep); /* base sombre si la photo ne charge pas */
   isolation: isolate;
 }
 .hero__media { position: absolute; inset: 0; z-index: -3; }
