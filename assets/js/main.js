@@ -232,6 +232,56 @@
     });
   }
 
+  /* ---------- Vidéos ----------
+     Règles : muettes + boucle + playsinline (seule combinaison qui autorise
+     l'autoplay sur mobile). Une vidéo n'est révélée QUE si elle joue vraiment :
+     sinon l'image de repli reste affichée. Chargement différé à l'approche
+     du viewport pour ne pas plomber le premier rendu. */
+  (function videos() {
+    const hero = $(".hero__video");
+    const lazy = $$("video[data-video]");
+
+    if (reduceMotion) {
+      // Mouvement réduit : aucune vidéo ne démarre, les images de repli suffisent.
+      if (hero) hero.removeAttribute("autoplay");
+      return;
+    }
+
+    const start = (v) => {
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => {}); // autoplay refusé -> on garde l'image
+    };
+
+    if (hero) {
+      hero.addEventListener("playing", () => hero.classList.add("is-playing"), { once: true });
+      hero.addEventListener("error", () => hero.remove());
+      start(hero);
+      // Économie : on coupe la vidéo quand l'onglet passe en arrière-plan
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) hero.pause();
+        else if (hero.isConnected) start(hero);
+      });
+    }
+
+    if (!lazy.length) return;
+    const arm = (v) => {
+      if (v.dataset.armed) return;
+      v.dataset.armed = "1";
+      v.addEventListener("playing", () => v.classList.add("is-playing"), { once: true });
+      v.addEventListener("error", () => v.remove());
+      v.src = v.dataset.video;
+      start(v);
+    };
+    if (!("IntersectionObserver" in window)) { lazy.forEach(arm); return; }
+    const vio = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { arm(e.target); }
+        else if (e.target.dataset.armed) { e.target.pause(); }
+      });
+    }, { rootMargin: "200px" });
+    lazy.forEach((v) => vio.observe(v));
+  })();
+
   /* ---------- Photos réelles injectées (repli = illustration SVG dessous) ---------- */
   (function injectPhotos() {
     const P = "https://images.pexels.com/photos/";

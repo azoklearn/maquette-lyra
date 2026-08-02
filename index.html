@@ -105,8 +105,11 @@
   <!-- ============================ HERO ============================ -->
   <section class="hero">
     <div class="hero__media" aria-hidden="true">
-      <!-- Photo du hero -->
+      <!-- Photo du hero (repli permanent, visible tant que la vidéo ne joue pas) -->
       <div class="hero__photo loaded" data-src="assets/img/hero.png" style="background-image:url('assets/img/hero.png')"></div>
+      <!-- Vidéo de fond : muette, en boucle. Se révèle uniquement si elle démarre. -->
+      <video class="hero__video" muted loop playsinline preload="auto" poster="assets/img/hero.png"
+             src="https://videos.pexels.com/video-files/5309354/5309354-hd_1920_1080_25fps.mp4"></video>
     </div>
     <canvas class="hero__canvas" aria-hidden="true"></canvas>
     <div class="hero__scrim" aria-hidden="true"></div>
@@ -215,13 +218,15 @@
   <section class="section gallery">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">En images</p>
+        <p class="eyebrow">En images & en vidéo</p>
         <h2>Un aperçu de notre savoir-faire.</h2>
         <p>De la sélection à la livraison, chaque véhicule est traité avec le même soin, de l'atelier jusqu'à votre allée.</p>
       </div>
       <div class="gallery__grid" data-stagger="0.08">
         <a href="vehicules.html" class="gtile gtile--tall reveal">
           <img src="https://images.pexels.com/photos/18108314/pexels-photo-18108314/free-photo-of-modern-expensive-cars-in-the-garage.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=900&amp;h=1200" alt="Véhicules premium alignés dans un showroom" loading="lazy" />
+          <video data-video="https://videos.pexels.com/video-files/5309378/5309378-hd_1920_1080_25fps.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="gtile__play" aria-hidden="true"><svg viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg></span>
           <div class="gtile__cap"><span class="k">Sélection premium</span><span class="t">Des véhicules triés sur le volet</span></div>
         </a>
         <div class="gtile reveal">
@@ -230,10 +235,14 @@
         </div>
         <div class="gtile reveal">
           <img src="https://images.pexels.com/photos/22719123/pexels-photo-22719123/free-photo-of-cargo-ship-in-harbor-in-hamburg-in-germany.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=560" alt="Port et transport maritime des véhicules importés" loading="lazy" />
+          <video data-video="https://videos.pexels.com/video-files/16000995/16000995-hd_1920_1080_30fps.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="gtile__play" aria-hidden="true"><svg viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg></span>
           <div class="gtile__cap"><span class="k">Logistique</span><span class="t">Transport sécurisé</span></div>
         </div>
         <div class="gtile reveal">
           <img src="https://images.pexels.com/photos/17632052/pexels-photo-17632052/free-photo-of-sports-car-on-display-in-dealership.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=560" alt="Voiture de sport préparée en concession" loading="lazy" />
+          <video data-video="https://videos.pexels.com/video-files/6157907/6157907-hd_1920_1080_30fps.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="gtile__play" aria-hidden="true"><svg viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg></span>
           <div class="gtile__cap"><span class="k">Préparation</span><span class="t">Livrées prêtes à rouler</span></div>
         </div>
         <div class="gtile reveal">

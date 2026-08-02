@@ -58,6 +58,25 @@ Tout est défini dans `:root` (`assets/css/styles.css`).
 Toutes les paires de texte respectent WCAG AA (≥ 4,5:1) et les bordures de contrôles ≥ 3:1
 (`--line-strong`). Changer une seule valeur de `:root` suffit à repropager la couleur partout.
 
+## Vidéo
+Le site intègre de la vidéo à trois endroits, toujours **muette, en boucle et sans contrôle** :
+- **hero de l'accueil** : plan de conduite en fond ;
+- **galerie de l'accueil** : 3 tuiles animées (badge ▶) ;
+- **page Importation** : bande « Transport & suivi en direct » (logistique portuaire).
+
+Garde-fous (importants si vous modifiez ces blocs) :
+- chaque vidéo est posée **par-dessus une image de repli** et n'est révélée que si elle
+  démarre réellement. Connexion lente, autoplay refusé, mobile économe : l'image reste,
+  rien n'est cassé ;
+- attributs obligatoires pour l'autoplay mobile : `muted loop playsinline` ;
+- les vidéos hors hero sont en `preload="none"` et ne se chargent qu'à l'approche de
+  l'écran, puis se mettent en pause quand elles en sortent ;
+- lecture suspendue quand l'onglet passe en arrière-plan, et **aucune vidéo ne démarre**
+  si l'utilisateur a activé « réduire les animations » (`prefers-reduced-motion`).
+
+Pour changer une vidéo : remplacez l'URL dans l'attribut `data-video` (ou `src` pour le hero).
+Les fichiers actuels viennent de **Pexels** (libres d'usage) et sont chargés en ligne.
+
 ## À personnaliser
 1. **Image du hero (accueil)** - la photo utilisée est `assets/img/hero.png`. Pour la changer,
    remplacez simplement ce fichier (un prompt de génération est fourni plus bas).
