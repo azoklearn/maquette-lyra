@@ -306,7 +306,7 @@
     });
     const VEH = {
       "Ford Mustang GT": "16284856/pexels-photo-16284856/free-photo-of-black-ford-mustang-on-street.jpeg",
-      "Corvette C8 Stingray": "34243843/pexels-photo-34243843.jpeg",
+      "Corvette C8 Stingray": "24589327/pexels-photo-24589327.jpeg",
       "Porsche 911 Carrera S": "33621659/pexels-photo-33621659/free-photo-of-white-sports-car-racing-through-san-diego-streets.jpeg",
       "Audi RS6 Avant": "12351517/pexels-photo-12351517.jpeg",
       "Mercedes-AMG C63": "14667492/pexels-photo-14667492.jpeg",
