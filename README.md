@@ -34,37 +34,29 @@ lyra/
 ```
 
 ## Palette
-Le design system repose sur trois matières, toutes définies dans `:root` (`assets/css/styles.css`) :
+Toute la palette est dérivée du **logo** (écusson navy) et volontairement lumineuse :
+le fond reste clair, et les blocs sombres utilisent un navy éclairci pour ne pas alourdir la page.
+Tout est défini dans `:root` (`assets/css/styles.css`).
 
 | Rôle | Token | Valeur |
 |---|---|---|
-| Fond global (platine froid) | `--canvas` | `#EEF0F3` |
-| Surfaces / cartes | `--surface` | `#FBFBFD` |
-| Encre (titres) | `--ink` | `#111C26` |
-| Navy de l'écusson (sections sombres) | `--brand` / `--brand-deep` | `#082038` / `#001020` |
-| **Carmin** (action, remplissage) | `--accent` | `#C22A33` |
-| Carmin foncé (**tout texte** accentué sur fond clair) | `--accent-deep` | `#7A1D27` |
-| Acier clair (accents des sections **sombres**) | `--accent-2` | `#AEC8DC` |
-| Carmin clair (texte accentué sur fond **sombre**) | `--accent-on-dark` | `#E97078` |
+| Fond global (platine bleuté) | `--canvas` | `#EEF1F5` |
+| Surfaces / cartes | `--surface` | `#FBFCFE` |
+| Encre (titres) | `--ink` | `#122231` |
+| Sections sombres (navy éclairci) | `--brand` / `--brand-deep` | `#12395C` / `#0B2740` |
+| **Accent** (action, remplissage) | `--accent` | `#2A6C9E` |
+| Accent foncé (**tout texte** accentué sur fond clair) | `--accent-deep` | `#1B4A6E` |
+| Acier clair (accents des sections **sombres**) | `--accent-2` | `#AECFE8` |
+| Bleu clair (texte accentué sur fond **sombre**) | `--accent-on-dark` | `#8FC3E6` |
 
 **Deux règles à respecter si vous modifiez le site :**
-1. Sur fond **clair**, le carmin `--accent` ne sert qu'en **remplissage** (boutons). Tout **texte**
-   accentué doit utiliser `--accent-deep`, sinon le contraste passe sous le seuil WCAG.
-2. Sur fond **sombre** (navy ou photo), les accents passent en `--accent-2` (acier) ou
-   `--accent-on-dark` : le carmin foncé y devient illisible. Les CTA des sections navy sont
-   d'ailleurs des **plaques acier** à texte navy, pas des boutons carmin.
+1. Sur fond **clair**, `--accent` ne sert qu'en **remplissage** (boutons). Tout **texte** accentué
+   doit utiliser `--accent-deep`, sinon le contraste passe sous le seuil WCAG.
+2. Sur fond **sombre** (navy ou photo), les accents passent en `--accent-2` ou `--accent-on-dark`.
+   Les CTA des sections navy sont d'ailleurs des **plaques claires** à texte navy.
 
 Toutes les paires de texte respectent WCAG AA (≥ 4,5:1) et les bordures de contrôles ≥ 3:1
 (`--line-strong`). Changer une seule valeur de `:root` suffit à repropager la couleur partout.
-
-## Photos
-Le site est illustré avec de **vraies photos** (voitures, port, showroom) issues de **Pexels**
-(banque d'images gratuite, libres d'usage), chargées en ligne. Deux garde-fous :
-- si une photo ne charge pas (hors-ligne, lien changé), l'**illustration SVG** reprend
-  automatiquement le relais - le site n'est jamais « cassé » ;
-- les photos des **cartes véhicules** sont des visuels de démonstration : remplacez-les par
-  les photos réelles de vos annonces (voir le tableau de correspondance dans `assets/js/main.js`,
-  objet `VEH`, ou déposez vos propres fichiers).
 
 ## À personnaliser
 1. **Image du hero (accueil)** - la photo utilisée est `assets/img/hero.png`. Pour la changer,

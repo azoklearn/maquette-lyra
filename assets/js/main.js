@@ -153,8 +153,8 @@
         const flick = p.a * (0.6 + 0.4 * Math.sin(p.tw));
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(174, 200, 220, ${flick})`;
-        ctx.shadowBlur = 8; ctx.shadowColor = "rgba(174, 200, 220,0.5)";
+        ctx.fillStyle = `rgba(174, 207, 232, ${flick})`;
+        ctx.shadowBlur = 8; ctx.shadowColor = "rgba(174, 207, 232,0.5)";
         ctx.fill();
       });
       ctx.shadowBlur = 0;
