@@ -60,7 +60,8 @@ Toutes les paires de texte respectent WCAG AA (≥ 4,5:1) et les bordures de con
 
 ## Vidéo
 Le site intègre de la vidéo à trois endroits, toujours **muette, en boucle et sans contrôle** :
-- **hero de l'accueil** : plan de conduite en fond ;
+- **hero de l'accueil** : quai portuaire au crépuscule (grues, conteneurs, navires), dans le
+  prolongement direct de la photo `hero.png` ;
 - **galerie de l'accueil** : 3 tuiles animées (badge ▶) ;
 - **page Importation** : bande « Transport & suivi en direct » (logistique portuaire).
 
