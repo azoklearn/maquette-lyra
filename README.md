@@ -26,9 +26,36 @@ lyra/
 ├─ assets/
 │  ├─ css/styles.css      → design system complet (couleurs, typo, composants)
 │  ├─ js/main.js          → nav, animations au scroll, filtres, formulaire…
-│  └─ img/favicon.svg     → logo / favicon (créé sur mesure)
+│  └─ img/
+│     ├─ logo.png         → écusson Lyra Motors (header + footer)
+│     ├─ hero.png         → photo du hero (accueil)
+│     └─ favicon.svg      → favicon accordé à l'écusson
 └─ README.md
 ```
+
+## Palette
+Le design system repose sur trois matières, toutes définies dans `:root` (`assets/css/styles.css`) :
+
+| Rôle | Token | Valeur |
+|---|---|---|
+| Fond global (platine froid) | `--canvas` | `#EEF0F3` |
+| Surfaces / cartes | `--surface` | `#FBFBFD` |
+| Encre (titres) | `--ink` | `#111C26` |
+| Navy de l'écusson (sections sombres) | `--brand` / `--brand-deep` | `#082038` / `#001020` |
+| **Carmin** (action, remplissage) | `--accent` | `#C22A33` |
+| Carmin foncé (**tout texte** accentué sur fond clair) | `--accent-deep` | `#7A1D27` |
+| Acier clair (accents des sections **sombres**) | `--accent-2` | `#AEC8DC` |
+| Carmin clair (texte accentué sur fond **sombre**) | `--accent-on-dark` | `#E97078` |
+
+**Deux règles à respecter si vous modifiez le site :**
+1. Sur fond **clair**, le carmin `--accent` ne sert qu'en **remplissage** (boutons). Tout **texte**
+   accentué doit utiliser `--accent-deep`, sinon le contraste passe sous le seuil WCAG.
+2. Sur fond **sombre** (navy ou photo), les accents passent en `--accent-2` (acier) ou
+   `--accent-on-dark` : le carmin foncé y devient illisible. Les CTA des sections navy sont
+   d'ailleurs des **plaques acier** à texte navy, pas des boutons carmin.
+
+Toutes les paires de texte respectent WCAG AA (≥ 4,5:1) et les bordures de contrôles ≥ 3:1
+(`--line-strong`). Changer une seule valeur de `:root` suffit à repropager la couleur partout.
 
 ## Photos
 Le site est illustré avec de **vraies photos** (voitures, port, showroom) issues de **Pexels**
@@ -40,9 +67,8 @@ Le site est illustré avec de **vraies photos** (voitures, port, showroom) issue
   objet `VEH`, ou déposez vos propres fichiers).
 
 ## À personnaliser
-1. **Image du hero (accueil)** - une photo premium s'affiche par défaut. Pour la vôtre,
-   déposez votre visuel sous `assets/img/hero.jpg` : il remplace automatiquement la photo par défaut.
-   → Prompt de génération fourni ci-dessous.
+1. **Image du hero (accueil)** - la photo utilisée est `assets/img/hero.png`. Pour la changer,
+   remplacez simplement ce fichier (un prompt de génération est fourni plus bas).
 2. **Liens leboncoin** - dans `vehicules.html`, chaque bouton *« Voir l'annonce »* pointe
    pour l'instant vers `https://www.leboncoin.fr`. Remplacez par l'URL réelle de chaque annonce
    (repères `<!-- Remplacer href par l'URL de l'annonce leboncoin -->`).
@@ -51,7 +77,10 @@ Le site est illustré avec de **vraies photos** (voitures, port, showroom) issue
    service (Formspree, EmailJS, ou un back-end) dans `assets/js/main.js`.
 4. **Coordonnées** - e-mail / téléphone (`contact@lyramotors.fr`, `+33 6 00 00 00 00`) à remplacer
    partout (header, footer, page contact).
-5. **Couleurs & typo** - tout est centralisé dans les variables `:root` en haut de `styles.css`.
+5. **Couleurs & typo** - tout est centralisé dans les variables `:root` en haut de `styles.css`
+   (voir la section « Palette » ci-dessus et ses deux règles d'usage).
+6. **Logo** - `assets/img/logo.png` (écusson détouré, fond transparent). Le remplacer suffit :
+   il est utilisé dans les en-têtes et pieds de page des 4 pages.
 
 ## Prompt image du hero
 Générez une image **16:9** et enregistrez-la sous `assets/img/hero.jpg` :

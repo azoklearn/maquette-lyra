@@ -1,18 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#16455F"/><stop offset="1" stop-color="#0C2130"/>
+    <linearGradient id="nv" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16304A"/>
+      <stop offset="1" stop-color="#08182A"/>
     </linearGradient>
-    <linearGradient id="brz" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#E8D8B7"/><stop offset=".5" stop-color="#C79A55"/><stop offset="1" stop-color="#9A6B34"/>
+    <linearGradient id="st" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D7E2EC"/>
+      <stop offset="1" stop-color="#93A9BE"/>
     </linearGradient>
   </defs>
-  <rect width="48" height="48" rx="12" fill="url(#bg)"/>
-  <g transform="translate(24 26.5) scale(0.74) translate(-23.5 -27)">
-    <g fill="url(#brz)">
-      <path d="M3 30 C4 26 8 25 12 24.5 L18 24 C21 19.5 26 18 31.5 19 C36 19.8 39.5 21.8 41.5 25 L44 29.5 C44.6 30.6 44 31.5 42.8 31.5 L3.9 31.5 C3 31.5 2.7 30.8 3 30 Z"/>
-      <circle cx="13.5" cy="31.5" r="4.4"/><circle cx="33.5" cy="31.5" r="4.4"/>
-    </g>
-    <g fill="#0C2130"><circle cx="13.5" cy="31.5" r="1.7"/><circle cx="33.5" cy="31.5" r="1.7"/></g>
-  </g>
+  <!-- Losange (repris de l'ecusson Lyra Motors) -->
+  <path d="M24 2.5 44.5 24 24 45.5 3.5 24 Z" fill="url(#nv)"/>
+  <path d="M24 6 41 24 24 42 7 24 Z" fill="none" stroke="#6E8AA6" stroke-width="1.1" opacity=".55"/>
+  <!-- Etoile -->
+  <path d="M24 13.5 26.05 19.6 32.5 19.6 27.3 23.4 29.25 29.5 24 25.75 18.75 29.5 20.7 23.4 15.5 19.6 21.95 19.6 Z" fill="url(#st)"/>
+  <!-- Barre de calandre stylisee -->
+  <rect x="16.5" y="32" width="15" height="2.4" rx="1.2" fill="url(#st)" opacity=".9"/>
 </svg>
