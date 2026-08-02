@@ -995,6 +995,57 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
 }
 .cta .cta__inner { padding-top: calc(clamp(4rem, 3rem + 5vw, 7.5rem) + var(--shear)); }
 
+/* 2 bis. LIGNE DE DÉPART : damier de grille, façon circuit.
+   Deux rangées de carreaux, bords fondus, un filet net en dessous
+   (le vrai trait de départ). Version claire et version sur navy. */
+/* Le motif vit sur ::before : .reveal.in force opacity:1 sur l'élément,
+   il ne doit donc pas porter lui-même l'opacité du damier. */
+.startline {
+  --sq: clamp(15px, 1.9vw, 27px);   /* carreaux francs : ça doit lire "grille de départ" */
+  position: relative;
+  height: calc(var(--sq) * 2);
+  margin-block: clamp(2rem, 1.2rem + 2.5vw, 4rem);
+}
+.startline::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: repeating-conic-gradient(var(--ink) 0% 25%, transparent 0% 50%);
+  background-size: calc(var(--sq) * 2) calc(var(--sq) * 2);
+  background-position: center top;
+  opacity: .30;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
+}
+/* le trait de départ proprement dit */
+.startline::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: calc(var(--sq) * -0.5);
+  height: 3px; background: var(--ink); opacity: .34;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+}
+/* Sur les bandes navy */
+.startline--dark::before { background-image: repeating-conic-gradient(var(--accent-2) 0% 25%, transparent 0% 50%); opacity: .34; }
+.startline--dark::after { background: var(--accent-2); opacity: .4; }
+
+/* Marquage au sol : ligne discontinue d'axe de route */
+.roadline { position: relative; height: 3px; margin-block: clamp(2rem, 1.2rem + 2.5vw, 3.5rem); }
+.roadline::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(90deg, var(--ink) 0 42px, transparent 42px 82px);
+  opacity: .16;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* la grille "s'élance" légèrement quand elle entre à l'écran */
+  .startline::before { transition: background-position 1.4s var(--ease-out); }
+  .js .startline.reveal::before { background-position: -64px top; }
+  .startline.reveal.in::before { background-position: center top; }
+}
+
 /* 2. Séparateur : filet interrompu par un losange */
 .section-sep {
   display: flex; align-items: center; justify-content: center; gap: 1.1rem;
