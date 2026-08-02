@@ -78,6 +78,18 @@ Garde-fous (importants si vous modifiez ces blocs) :
 Pour changer une vidéo : remplacez l'URL dans l'attribut `data-video` (ou `src` pour le hero).
 Les fichiers actuels viennent de **Pexels** (libres d'usage) et sont chargés en ligne.
 
+## Photos
+Le site est illustré avec de **vraies photos** (voitures, port, atelier) issues de **Pexels**
+(banque d'images gratuite, libre d'usage), chargées en ligne. Trois règles :
+
+1. **Aucune photo montrant des personnes identifiables.** Des inconnus en photo laisseraient
+   croire qu'il s'agit de vos clients ou de votre équipe. Les visuels « humains » sont donc
+   remplacés par des objets parlants : clés sur cuir, atelier, quai portuaire.
+2. Si une photo ne charge pas (hors-ligne, lien changé), l'**illustration SVG** reprend
+   automatiquement le relais : le site n'est jamais « cassé ».
+3. Les photos des **cartes véhicules** sont des visuels de démonstration. Remplacez-les par les
+   photos réelles de vos annonces via l'objet `VEH` dans `assets/js/main.js`.
+
 ## À personnaliser
 1. **Image du hero (accueil)** - la photo utilisée est `assets/img/hero.png`. Pour la changer,
    remplacez simplement ce fichier (un prompt de génération est fourni plus bas).
