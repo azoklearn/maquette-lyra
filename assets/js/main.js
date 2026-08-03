@@ -268,6 +268,20 @@
       v.src = v.dataset.video;
       start(v);
     };
+    /* Tuiles à deux plans : on alterne le plan visible toutes les 6 s.
+       Le premier est marqué d'emblée pour qu'il n'y ait jamais de trou. */
+    $$(".gtile--duo").forEach((tile) => {
+      const clips = $$("video", tile);
+      if (clips.length < 2) return;
+      clips[0].classList.add("is-front");
+      let i = 0;
+      setInterval(() => {
+        clips[i].classList.remove("is-front");
+        i = (i + 1) % clips.length;
+        clips[i].classList.add("is-front");
+      }, 6000);
+    });
+
     if (!("IntersectionObserver" in window)) { lazy.forEach(arm); return; }
     const vio = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
