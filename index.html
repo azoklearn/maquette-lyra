@@ -105,10 +105,9 @@
   <!-- ============================ HERO ============================ -->
   <section class="hero">
     <div class="hero__media" aria-hidden="true">
-      <!-- Photo du hero (repli permanent, visible tant que la vidéo ne joue pas) -->
-      <div class="hero__photo loaded" data-src="assets/img/hero.png" style="background-image:url('assets/img/hero.png')"></div>
-      <!-- Vidéo de fond : muette, en boucle. Se révèle uniquement si elle démarre. -->
-      <video class="hero__video" muted loop playsinline preload="auto" poster="assets/img/hero.png"
+      <!-- Vidéo de fond seule : muette, en boucle. Le fond navy de .hero
+           reste visible pendant le chargement. -->
+      <video class="hero__video" muted loop playsinline preload="auto"
              src="https://videos.pexels.com/video-files/9831955/9831955-hd_1920_1080_30fps.mp4"></video>
     </div>
     <canvas class="hero__canvas" aria-hidden="true"></canvas>

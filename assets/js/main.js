@@ -89,18 +89,6 @@
     track.appendChild(frag);
   });
 
-  /* ---------- Hero : photo réelle (fallback = scène SVG) ---------- */
-  const heroPhoto = $(".hero__photo");
-  if (heroPhoto) {
-    const src = heroPhoto.dataset.src || "assets/img/hero.jpg";
-    const img = new Image();
-    img.onload = () => {
-      heroPhoto.style.backgroundImage = `url("${src}")`;
-      heroPhoto.classList.add("loaded");
-    };
-    img.src = src;
-  }
-
   /* ---------- Hero : parallaxe douce ---------- */
   const scene = $(".hero__scene");
   if (scene && !reduceMotion) {
@@ -242,8 +230,16 @@
     const lazy = $$("video[data-video]");
 
     if (reduceMotion) {
-      // Mouvement réduit : aucune vidéo ne démarre, les images de repli suffisent.
-      if (hero) hero.removeAttribute("autoplay");
+      // Mouvement réduit : rien ne doit bouger. Le hero n'ayant plus d'image de
+      // repli, on affiche une image FIXE de la vidéo plutôt qu'un aplat vide.
+      if (hero) {
+        hero.addEventListener("loadeddata", () => {
+          try { hero.currentTime = 6; } catch (e) {}
+          hero.classList.add("is-playing");   // rend visible, sans jamais lancer la lecture
+        }, { once: true });
+        hero.addEventListener("error", () => hero.remove());
+        hero.load();
+      }
       return;
     }
 

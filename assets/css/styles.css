@@ -431,18 +431,6 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
   isolation: isolate;
 }
 .hero__media { position: absolute; inset: 0; z-index: -3; }
-/* Photo réelle (déposer assets/img/hero.jpg) - sinon la scène SVG reste visible */
-.hero__photo {
-  position: absolute; inset: 0;
-  background-image: var(--hero-photo, none);
-  background-size: cover; background-position: center 62%;
-  opacity: 0; /* passe à 1 via JS si l'image charge */
-  transition: opacity 1.2s var(--ease);
-  animation: heroZoom 22s var(--ease-in-out) infinite alternate;
-}
-.hero__photo.loaded { opacity: 1; }
-@keyframes heroZoom { from { transform: scale(1.02); } to { transform: scale(1.12); } }
-
 .hero__scene { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero__scene svg { width: 100%; height: 100%; object-fit: cover; }
 .hero__canvas { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
@@ -939,7 +927,7 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal--clip, .line-mask > span { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
-  .marquee__track, .hero__photo, .hero__scroll .rail::after { animation: none !important; }
+  .marquee__track, .hero__scroll .rail::after { animation: none !important; }
   .btn::after, .lbc::after { display: none; }
 }
 
@@ -1155,7 +1143,6 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
 /* =====================================================================
    PHOTOS RÉELLES (avec repli sur les illustrations SVG en dessous)
    ===================================================================== */
-.hero__photo { z-index: 1; }                 /* la photo passe au-dessus de la scène SVG */
 .vcard__media .photo,
 .cat__bg .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .cat__bg .photo { transition: transform 1s var(--ease-out); }
