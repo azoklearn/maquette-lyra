@@ -1155,11 +1155,44 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
    l'image reste visible et rien n'est cassé.
    ===================================================================== */
 /* Photo de fond du hero. L'image est panoramique : on l'ancre au centre pour
-   garder les trois véhicules dans le cadre quel que soit le format d'écran. */
+   garder les trois véhicules dans le cadre quel que soit le format d'écran.
+   Effet "vidéo" : dérive très lente (Ken Burns), on part déjà zoomé pour que
+   le recadrage ne laisse jamais de bord vide. */
 .hero__img {
   position: absolute; inset: 0; z-index: 1;
   width: 100%; height: 100%;
   object-fit: cover; object-position: center 62%;
+  transform: scale(1.08);
+  animation: heroDrift 34s var(--ease-in-out) infinite;
+  will-change: transform;
+}
+@keyframes heroDrift {
+  0%   { transform: scale(1.08) translate3d(0, 0, 0); }
+  50%  { transform: scale(1.15) translate3d(-1.6%, -1.1%, 0); }
+  100% { transform: scale(1.08) translate3d(0, 0, 0); }
+}
+
+/* Halo solaire qui respire, calé sur le coucher de soleil de la photo */
+.hero__glare {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(34% 52% at 88% 52%, rgba(255, 206, 138, .30), transparent 64%);
+  mix-blend-mode: screen;
+  animation: heroGlare 11s ease-in-out infinite alternate;
+}
+@keyframes heroGlare { from { opacity: .5; } to { opacity: 1; } }
+
+/* Léger scintillement d'ensemble, comme une image filmée */
+.hero__flicker {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: rgba(174, 207, 232, .05);
+  animation: heroFlicker 7s steps(24, end) infinite;
+}
+@keyframes heroFlicker { 0%,100% { opacity: .25; } 33% { opacity: .55; } 66% { opacity: .1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__img { animation: none; transform: scale(1.02); }
+  .hero__glare, .hero__flicker { animation: none; }
+  .hero__flicker { display: none; }
 }
 
 .hero__video {
