@@ -91,7 +91,7 @@
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -102,7 +102,7 @@ body {
   background: var(--canvas);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
   font-feature-settings: "ss01","cv01";
 }
 
@@ -1124,7 +1124,7 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
 .section-sep--dark i::before { background: var(--accent-2); }
 
 /* 3. Filigrane : grand losange en fil de fer, posé en fond de section */
-.watermark { position: relative; }
+.watermark { position: relative; overflow: hidden; }   /* sinon le losange elargit la page */
 .watermark > * { position: relative; z-index: 1; }
 .watermark::before {
   content: "";
