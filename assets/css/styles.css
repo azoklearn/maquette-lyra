@@ -1195,6 +1195,38 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
   .hero__flicker { display: none; }
 }
 
+/* ---- Hero en split diagonal : voiture | port ----
+   Deux plans découpés par une même diagonale, dans le sens du biseau des
+   bandes navy. La photo dessous reste le repli si une vidéo ne démarre pas. */
+.hero__split { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.hero__v {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity 1.4s var(--ease);
+}
+.hero__v.is-playing { opacity: 1; }
+.hero__v--cars { clip-path: polygon(0 0, 63% 0, 47% 100%, 0 100%); }
+.hero__v--port { clip-path: polygon(63% 0, 100% 0, 100% 100%, 47% 100%); object-position: center 60%; }
+
+/* Liseré clair le long de la coupe */
+.hero__seam { position: absolute; inset: 0; overflow: hidden; }
+.hero__seam::before {
+  content: "";
+  position: absolute; top: -12%; bottom: -12%; left: 55%;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(220,231,241,.55) 22%, rgba(220,231,241,.55) 78%, transparent);
+  transform: rotate(9.2deg);
+}
+
+/* Sous 760px la diagonale n'a plus de place : un seul plan, celui des voitures */
+@media (max-width: 760px) {
+  .hero__v--cars { clip-path: none; }
+  .hero__v--port, .hero__seam { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__split { display: none; }   /* la photo fixe suffit */
+}
+
 .hero__video {
   position: absolute; inset: 0; z-index: 2;
   width: 100%; height: 100%; object-fit: cover;

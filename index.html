@@ -105,8 +105,18 @@
   <!-- ============================ HERO ============================ -->
   <section class="hero">
     <div class="hero__media" aria-hidden="true">
-      <!-- Photo de fond du hero, animée façon plan filmé -->
+      <!-- Photo de fond : repli permanent, visible tant que les vidéos ne jouent pas -->
       <img class="hero__img" src="assets/img/hero1.jpg" alt="" fetchpriority="high" decoding="async" />
+
+      <!-- Split diagonal : la voiture à gauche, le port à droite, les deux en même temps -->
+      <div class="hero__split">
+        <video class="hero__v hero__v--cars" muted loop playsinline preload="auto"
+               src="https://videos.pexels.com/video-files/5309354/5309354-hd_1920_1080_25fps.mp4"></video>
+        <video class="hero__v hero__v--port" muted loop playsinline preload="auto"
+               src="https://videos.pexels.com/video-files/9831955/9831955-hd_1920_1080_30fps.mp4"></video>
+        <span class="hero__seam" aria-hidden="true"></span>
+      </div>
+
       <span class="hero__glare"></span>
       <span class="hero__flicker"></span>
     </div>

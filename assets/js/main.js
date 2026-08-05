@@ -248,6 +248,17 @@
       if (p && typeof p.catch === "function") p.catch(() => {}); // autoplay refusé -> on garde l'image
     };
 
+    /* Split diagonal du hero : les deux plans démarrent ensemble. Si l'un échoue,
+       il est retiré et la photo de fond réapparaît sur cette moitié. */
+    $$(".hero__v").forEach((v) => {
+      v.addEventListener("playing", () => v.classList.add("is-playing"), { once: true });
+      v.addEventListener("error", () => v.remove());
+      start(v);
+    });
+    document.addEventListener("visibilitychange", () => {
+      $$(".hero__v").forEach((v) => (document.hidden ? v.pause() : start(v)));
+    });
+
     if (hero) {
       hero.addEventListener("playing", () => hero.classList.add("is-playing"), { once: true });
       hero.addEventListener("error", () => hero.remove());
