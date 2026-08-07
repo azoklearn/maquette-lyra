@@ -28,29 +28,37 @@
   /* ---------- Année courante ---------- */
   $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 
-  /* ---------- Reveal au scroll ---------- */
-  const revealEls = $$(".reveal, .line-mask");
-  // Stagger automatique pour les groupes
-  $$("[data-stagger]").forEach((group) => {
-    const step = parseFloat(group.dataset.stagger) || 0.08;
-    $$(".reveal, .line-mask", group).forEach((el, i) => {
-      if (!el.style.getPropertyValue("--d")) el.style.setProperty("--d", (i * step) + "s");
-    });
-  });
+  /* ---------- Reveal au scroll ----------
+     Rendu ré-exécutable : les cartes véhicules sont créées après le chargement
+     (voir vehicules.js), il faut pouvoir les prendre en charge à leur arrivée. */
+  const io = (reduceMotion || !("IntersectionObserver" in window))
+    ? null
+    : new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
 
-  if (reduceMotion || !("IntersectionObserver" in window)) {
-    revealEls.forEach((el) => el.classList.add("in"));
-  } else {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          io.unobserve(entry.target);
-        }
+  function armerReveals(racine = document) {
+    // Stagger automatique pour les groupes
+    const groupes = racine.matches && racine.matches("[data-stagger]")
+      ? [racine] : $$("[data-stagger]", racine);
+    groupes.forEach((group) => {
+      const step = parseFloat(group.dataset.stagger) || 0.08;
+      $$(".reveal, .line-mask", group).forEach((el, i) => {
+        if (!el.style.getPropertyValue("--d")) el.style.setProperty("--d", (i * step) + "s");
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    revealEls.forEach((el) => io.observe(el));
+    });
+    $$(".reveal, .line-mask", racine).forEach((el) => {
+      if (el.dataset.revealArme) return;
+      el.dataset.revealArme = "1";
+      if (io) io.observe(el); else el.classList.add("in");
+    });
   }
+  armerReveals();
 
   /* ---------- Compteurs (count-up) ---------- */
   const counters = $$("[data-count]");
@@ -152,16 +160,18 @@
     window.addEventListener("resize", () => { cancelAnimationFrame(anim); resize(); seed(); frame(); });
   }
 
-  /* ---------- Filtres véhicules ---------- */
+  /* ---------- Filtres véhicules ----------
+     Les cartes sont relues à chaque clic (elles arrivent après le chargement) et
+     le filtre ne touche QUE la grille du stock : la grille « à l'importation »
+     est une sélection courte, elle reste entière. */
   const filters = $$(".filter");
-  const vcards = $$(".vcard");
-  if (filters.length && vcards.length) {
+  if (filters.length) {
     filters.forEach((btn) => {
       btn.addEventListener("click", () => {
         filters.forEach((f) => f.classList.remove("is-active"));
         btn.classList.add("is-active");
         const cat = btn.dataset.filter;
-        vcards.forEach((card, i) => {
+        $$("#grid-stock .vcard").forEach((card, i) => {
           const show = cat === "all" || card.dataset.category === cat;
           if (show) {
             card.style.display = "";
@@ -177,6 +187,11 @@
     });
   }
 
+  /* Les cartes véhicules viennent d'être injectées : on les arme comme le reste. */
+  document.addEventListener("lyra:vehicules-rendus", () => {
+    $$("#grid-stock, #grid-import").forEach((g) => armerReveals(g));
+  });
+
   /* ---------- FAQ accordéon ---------- */
   $$(".faq__q").forEach((q) => {
     q.addEventListener("click", () => {
@@ -188,6 +203,31 @@
       q.setAttribute("aria-expanded", String(!open));
     });
   });
+
+  /* ---------- Pré-remplissage depuis « Demander ce véhicule » ----------
+     Les cartes « à l'importation » pointent vers contact.html?vehicule=…
+     On amorce le message pour que le visiteur n'ait pas à tout retaper. */
+  (function prefillVehicule() {
+    const form = $("#contact-form");
+    if (!form) return;
+    const modele = new URLSearchParams(location.search).get("vehicule");
+    if (!modele) return;
+    const msg = $("#message", form);
+    if (msg && !msg.value) {
+      msg.value = "Bonjour, je suis intéressé par ce véhicule à l'importation : " + modele +
+                  ".\nPouvez-vous me dire ce qui est possible ?";
+    }
+    const type = $("#type", form);
+    if (type && !type.value) {
+      // La carte porte déjà sa catégorie : on choisit l'option correspondante.
+      const cible = /mustang|camaro|corvette|challenger|911|gt\b/i.test(modele) ? "Sportive & GT"
+                  : /wrangler|ram|f-150|hilux|ranger|pick/i.test(modele) ? "Pick-up, 4×4 & utilitaire"
+                  : "";
+      if (cible) Array.from(type.options).forEach((o) => { if (o.text === cible) type.value = o.value || o.text; });
+    }
+    const bloc = form.closest("section") || form;
+    bloc.scrollIntoView({ behavior: "smooth", block: "start" });
+  })();
 
   /* ---------- Formulaire contact (démo front-end) ---------- */
   const form = $("#contact-form");
@@ -248,17 +288,6 @@
       if (p && typeof p.catch === "function") p.catch(() => {}); // autoplay refusé -> on garde l'image
     };
 
-    /* Split diagonal du hero : les deux plans démarrent ensemble. Si l'un échoue,
-       il est retiré et la photo de fond réapparaît sur cette moitié. */
-    $$(".hero__v").forEach((v) => {
-      v.addEventListener("playing", () => v.classList.add("is-playing"), { once: true });
-      v.addEventListener("error", () => v.remove());
-      start(v);
-    });
-    document.addEventListener("visibilitychange", () => {
-      $$(".hero__v").forEach((v) => (document.hidden ? v.pause() : start(v)));
-    });
-
     if (hero) {
       hero.addEventListener("playing", () => hero.classList.add("is-playing"), { once: true });
       hero.addEventListener("error", () => hero.remove());
@@ -316,7 +345,7 @@
       host.appendChild(img);
     }
     const CAT = {
-      "Sportives & GT": "38160273/pexels-photo-38160273.jpeg",
+      "Sportives & GT": "29098285/pexels-photo-29098285.jpeg",
       "SUV & berlines premium": "18340797/pexels-photo-18340797.jpeg",
       "4×4, pick-up & utilitaires": "12021856/pexels-photo-12021856.jpeg",
       "Véhicules du quotidien": "16296957/pexels-photo-16296957/free-photo-of-view-of-a-silver-volkswagen-golf-r32-parked-in-sunlight.jpeg",
@@ -325,22 +354,7 @@
       const t = c.querySelector("h3");
       if (t && CAT[t.textContent.trim()]) put(c.querySelector(".cat__bg"), CAT[t.textContent.trim()], 900, 620);
     });
-    const VEH = {
-      "Ford Mustang GT": "16284856/pexels-photo-16284856/free-photo-of-black-ford-mustang-on-street.jpeg",
-      "Corvette C8 Stingray": "24589327/pexels-photo-24589327.jpeg",
-      "Porsche 911 Carrera S": "33621659/pexels-photo-33621659/free-photo-of-white-sports-car-racing-through-san-diego-streets.jpeg",
-      "Audi RS6 Avant": "12351517/pexels-photo-12351517.jpeg",
-      "Mercedes-AMG C63": "14667492/pexels-photo-14667492.jpeg",
-      "Range Rover Sport HSE": "18340797/pexels-photo-18340797.jpeg",
-      "Dodge RAM 1500 Limited": "15643000/pexels-photo-15643000/free-photo-of-dodge-ram-1500-long-exposure.jpeg",
-      "Ford F-150 Lariat": "12021856/pexels-photo-12021856.jpeg",
-      "Toyota Hilux Invincible": "16521273/pexels-photo-16521273/free-photo-of-pick-up-truck-on-field.jpeg",
-      "Volkswagen Golf 8 GTI": "20809165/pexels-photo-20809165/free-photo-of-raindrops-on-black-volkswagen-golf-gti.jpeg",
-      "MINI Cooper S": "36261943/pexels-photo-36261943/free-photo-of-row-of-mini-cooper-cars-parked-outdoors.jpeg",
-    };
-    $$(".vcard").forEach((c) => {
-      const t = c.querySelector("h3");
-      if (t && VEH[t.textContent.trim()]) put(c.querySelector(".vcard__media"), VEH[t.textContent.trim()], 800, 600);
-    });
+    /* Les photos des cartes véhicules ne sont plus ici : chaque annonce porte la
+       sienne dans assets/data/vehicules.json, et vehicules.js la pose lui-même. */
   })();
 })();

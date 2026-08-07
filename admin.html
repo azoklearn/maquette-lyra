@@ -1,0 +1,262 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Panel véhicules · Lyra Motors</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+
+<style>
+  /* Styles propres au panel : c'est un outil interne, pas une page du site.
+     On réutilise les variables de la palette pour rester cohérent. */
+  .adm { max-width: 1180px; margin-inline: auto; padding: 2rem clamp(1rem, 0.5rem + 2vw, 2rem) 5rem; }
+  .adm__top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .adm__top h1 { font-family: var(--font-display); font-size: 1.7rem; }
+  .adm__top .sub { font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-faint); letter-spacing: 0.06em; }
+
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.6rem; margin-bottom: 1.4rem; }
+  .panel h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 1.1rem; display: flex; align-items: center; gap: 0.6rem; }
+  .panel h2 .n { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-deep); background: var(--accent-tint); border: 1px solid var(--accent-soft); border-radius: var(--r-pill); padding: 0.15rem 0.6rem; }
+
+  .grid { display: grid; gap: 0.9rem; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 860px) { .g2, .g3, .g4 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+  .f { display: flex; flex-direction: column; gap: 0.35rem; }
+  .f > label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+  .f > input, .f > select, .f > textarea {
+    font-family: var(--font-sans); font-size: 0.94rem; color: var(--ink);
+    padding: 0.7rem 0.85rem; background: var(--surface-pure);
+    border: 1px solid var(--line-strong); border-radius: var(--r-sm); width: 100%;
+  }
+  .f > input:focus, .f > select:focus, .f > textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .f .hint { font-size: 0.76rem; color: var(--ink-faint); }
+
+  .row-btn { display: flex; gap: 0.7rem; flex-wrap: wrap; align-items: center; margin-top: 1.2rem; }
+  .b { font: 600 0.92rem var(--font-sans); padding: 0.72rem 1.3rem; border-radius: var(--r-pill); border: 1px solid transparent; cursor: pointer; }
+  .b--go { background: var(--brand); color: #fff; }
+  .b--go:hover { background: var(--brand-2); }
+  .b--ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+  .b--ghost:hover { border-color: var(--brand); }
+  .b--danger { background: transparent; color: #8E2434; border-color: #C58A93; }
+  .b--danger:hover { background: #8E2434; color: #fff; }
+  .b:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .warn { border-left: 3px solid #B8860B; background: #FDF6E3; color: #4A3A0B; padding: 1rem 1.15rem; border-radius: var(--r-sm); font-size: 0.9rem; line-height: 1.55; }
+  .warn b { color: #3A2D08; }
+  .warn ul { margin: 0.5rem 0 0 1.1rem; list-style: disc; }
+  .warn li { margin-bottom: 0.25rem; }
+
+  .log { font-family: var(--font-mono); font-size: 0.78rem; padding: 0.85rem 1rem; border-radius: var(--r-sm); margin-top: 1rem; white-space: pre-wrap; line-height: 1.5; }
+  .log--ok { background: #E8F3EA; color: #1D4B29; border: 1px solid #A9CDB2; }
+  .log--ko { background: #FBEAEC; color: #7A1F2C; border: 1px solid #DFA9B1; }
+  .log--info { background: var(--accent-tint); color: var(--accent-deep); border: 1px solid var(--accent-soft); }
+  .log[hidden] { display: none; }
+
+  /* Liste des annonces */
+  .items { display: grid; gap: 0.6rem; }
+  .item { display: grid; grid-template-columns: 74px 1fr auto; gap: 1rem; align-items: center; padding: 0.7rem; background: var(--surface-pure); border: 1px solid var(--line); border-radius: var(--r-md); }
+  .item img { width: 74px; height: 56px; object-fit: cover; border-radius: var(--r-sm); background: var(--canvas-2); }
+  .item .ph { width: 74px; height: 56px; border-radius: var(--r-sm); background: var(--canvas-2); display: grid; place-items: center; font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-faint); }
+  .item .nm { font-weight: 700; font-size: 0.96rem; }
+  .item .mt { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); margin-top: 0.15rem; }
+  .item .acts { display: flex; gap: 0.4rem; }
+  .item .acts button { font: 600 0.8rem var(--font-sans); padding: 0.4rem 0.8rem; border-radius: var(--r-pill); border: 1px solid var(--line-strong); background: transparent; color: var(--ink); cursor: pointer; }
+  .item .acts button:hover { border-color: var(--brand); }
+  .item .acts .del:hover { border-color: #8E2434; color: #8E2434; }
+  .item.is-editing { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-tint); }
+
+  .tag { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.12rem 0.5rem; border-radius: var(--r-pill); }
+  .tag--stock { background: var(--accent-tint); color: var(--accent-deep); border: 1px solid var(--accent-soft); }
+  .tag--import { background: #FDF6E3; color: #6B5310; border: 1px solid #D9C48A; }
+
+  .pending { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-deep); }
+  .pending .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  [hidden] { display: none !important; }
+</style>
+
+<div class="adm">
+
+  <div class="adm__top">
+    <div>
+      <h1>Panel véhicules</h1>
+      <p class="sub">LYRA MOTORS · ÉDITION DU CATALOGUE</p>
+    </div>
+    <div style="display:flex;gap:0.6rem">
+      <button class="b b--ghost" id="b-lock" hidden>Verrouiller</button>
+      <a class="b b--ghost" href="vehicules.html">← Retour au site</a>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 1 : déverrouillage -->
+  <section class="panel" id="p-auth">
+
+    <!-- 1a. Première utilisation : on enregistre le jeton, chiffré -->
+    <div id="setup" hidden>
+      <h2><span class="n">1</span> Première configuration</h2>
+      <div class="warn" style="margin-bottom:1.3rem">
+        <b>À faire une seule fois, sur cet ordinateur.</b> Vous collez votre jeton GitHub et vous
+        choisissez un mot de passe. Le jeton est <b>chiffré avec ce mot de passe</b> et rangé dans
+        ce navigateur. Ensuite, vous ne taperez plus que le mot de passe.
+        <ul>
+          <li>Le jeton n'est <b>jamais</b> enregistré dans le dépôt : il ne quitte pas cet ordinateur,
+            sauf pour parler à GitHub.</li>
+          <li>Sans le mot de passe, ce qui est stocké est <b>illisible</b> : ce n'est pas un simple
+            écran de garde, c'est un vrai chiffrement (AES-256-GCM).</li>
+          <li>Créez un jeton <b>« fine-grained »</b> limité au dépôt <code>maquette-lyra</code>,
+            permission <b>Contents : Read and write</b>, et rien d'autre.</li>
+          <li>Choisissez un <b>vrai mot de passe</b> (12 caractères ou plus). C'est lui qui protège
+            le jeton si quelqu'un accède à cet ordinateur.</li>
+        </ul>
+      </div>
+
+      <div class="grid g2">
+        <div class="f">
+          <label for="s-token">Jeton GitHub</label>
+          <input id="s-token" type="password" placeholder="github_pat_..." autocomplete="off" spellcheck="false" />
+        </div>
+        <div class="f">
+          <label for="s-pass">Mot de passe du panel</label>
+          <input id="s-pass" type="password" autocomplete="new-password" />
+          <span class="hint" id="s-force"></span>
+        </div>
+      </div>
+      <div class="grid" style="margin-top:0.9rem">
+        <div class="f">
+          <label for="s-pass2">Confirmez le mot de passe</label>
+          <input id="s-pass2" type="password" autocomplete="new-password" />
+        </div>
+      </div>
+
+      <div class="row-btn">
+        <button class="b b--go" id="b-setup">Enregistrer et ouvrir le panel</button>
+      </div>
+    </div>
+
+    <!-- 1b. Utilisations suivantes : mot de passe seulement -->
+    <div id="unlock" hidden>
+      <h2><span class="n">1</span> Déverrouiller</h2>
+      <p style="color:var(--ink-soft);margin-bottom:1.1rem">Le jeton est déjà enregistré sur cet ordinateur. Entrez votre mot de passe.</p>
+      <div class="grid g2">
+        <div class="f">
+          <label for="u-pass">Mot de passe</label>
+          <input id="u-pass" type="password" autocomplete="current-password" />
+        </div>
+      </div>
+      <div class="row-btn">
+        <button class="b b--go" id="b-unlock">Ouvrir le panel</button>
+        <button class="b b--danger" id="b-reset">Oublier ce jeton</button>
+      </div>
+    </div>
+
+    <p class="log" id="log-conn" hidden></p>
+
+    <details style="margin-top:1.3rem">
+      <summary style="cursor:pointer;font-family:var(--font-mono);font-size:0.76rem;letter-spacing:0.06em;color:var(--ink-faint)">RÉGLAGES DU DÉPÔT</summary>
+      <div class="grid g4" style="margin-top:0.9rem">
+        <div class="f"><label for="f-owner">Propriétaire</label><input id="f-owner" value="azoklearn" autocomplete="off" /></div>
+        <div class="f"><label for="f-repo">Dépôt</label><input id="f-repo" value="maquette-lyra" autocomplete="off" /></div>
+        <div class="f"><label for="f-branch">Branche</label><input id="f-branch" value="main" autocomplete="off" /></div>
+        <div class="f"><label for="f-path">Fichier</label><input id="f-path" value="assets/data/vehicules.json" autocomplete="off" /></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ÉTAPE 2 : liste -->
+  <section class="panel" id="p-list" hidden>
+    <h2><span class="n">2</span> Annonces <span id="count-badge" class="sub"></span></h2>
+    <div class="row-btn" style="margin-top:0">
+      <button class="b b--go" id="b-new">+ Nouvelle annonce</button>
+      <span class="pending" id="pending" hidden><span class="dot"></span><span id="pending-txt"></span></span>
+    </div>
+    <div class="items" id="items" style="margin-top:1.2rem"></div>
+  </section>
+
+  <!-- ÉTAPE 3 : formulaire -->
+  <section class="panel" id="p-form" hidden>
+    <h2><span class="n">3</span> <span id="form-title">Nouvelle annonce</span></h2>
+
+    <div class="grid g3">
+      <div class="f">
+        <label for="v-statut">Disponibilité</label>
+        <select id="v-statut">
+          <option value="stock">En stock (bouton leboncoin)</option>
+          <option value="import">À l'importation (bouton contact)</option>
+        </select>
+      </div>
+      <div class="f">
+        <label for="v-categorie">Catégorie</label>
+        <select id="v-categorie">
+          <option value="sport">Sportives &amp; GT</option>
+          <option value="premium">SUV &amp; berlines premium</option>
+          <option value="pickup">4×4, pick-up &amp; utilitaires</option>
+          <option value="daily">Véhicules du quotidien</option>
+        </select>
+      </div>
+      <div class="f"><label for="v-badge">Pastille sur la photo</label><input id="v-badge" placeholder="Sportives &amp; GT" /></div>
+    </div>
+
+    <div class="grid g3" style="margin-top:0.9rem">
+      <div class="f"><label for="v-titre">Modèle *</label><input id="v-titre" placeholder="Ford Mustang GT" /></div>
+      <div class="f"><label for="v-drapeau">Drapeau</label><input id="v-drapeau" placeholder="🇺🇸" /></div>
+      <div class="f"><label for="v-origine">Pays d'origine</label><input id="v-origine" placeholder="États-Unis" /></div>
+    </div>
+
+    <div class="grid g4" style="margin-top:0.9rem">
+      <div class="f"><label for="v-annee">Année</label><input id="v-annee" placeholder="2022" /></div>
+      <div class="f"><label for="v-km">Kilométrage</label><input id="v-km" placeholder="18 500 km" /></div>
+      <div class="f"><label for="v-carburant">Carburant</label><input id="v-carburant" placeholder="Essence" /></div>
+      <div class="f"><label for="v-boite">Boîte</label><input id="v-boite" placeholder="Auto" /></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:0.9rem">
+      <div class="f">
+        <label for="v-prix">Prix (sans le €)</label>
+        <input id="v-prix" placeholder="62 900" />
+        <span class="hint">Laissez vide pour afficher « Sur devis ».</span>
+      </div>
+      <div class="f"><label for="v-prixMention">Mention sous le prix</label><input id="v-prixMention" placeholder="clé en main" /></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:0.9rem">
+      <div class="f" id="wrap-lien">
+        <label for="v-lien">Lien de l'annonce leboncoin</label>
+        <input id="v-lien" placeholder="https://www.leboncoin.fr/..." />
+      </div>
+      <div class="f" id="wrap-delai" hidden>
+        <label for="v-delai">Délai d'acheminement</label>
+        <input id="v-delai" placeholder="8 à 12 semaines" />
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:0.9rem">
+      <div class="f">
+        <label for="v-photo">Photo</label>
+        <input id="v-photo" placeholder="https://… ou assets/img/vehicules/ma-photo.jpg" />
+        <span class="hint">Collez une adresse d'image, ou envoyez un fichier ci-dessous : il sera déposé dans le dépôt.</span>
+      </div>
+      <div class="f">
+        <label for="v-file">Envoyer une photo depuis cet ordinateur</label>
+        <input id="v-file" type="file" accept="image/jpeg,image/png,image/webp" />
+        <span class="hint">JPEG, PNG ou WebP, 4 Mo maximum. L'envoi part avec l'enregistrement.</span>
+      </div>
+      <div id="preview-wrap" hidden>
+        <img id="preview" alt="" style="max-width:280px;border-radius:var(--r-sm);border:1px solid var(--line)" />
+      </div>
+    </div>
+
+    <div class="row-btn">
+      <button class="b b--go" id="b-save">Enregistrer et publier</button>
+      <button class="b b--ghost" id="b-cancel">Annuler</button>
+    </div>
+    <p class="log" id="log-form" hidden></p>
+  </section>
+
+</div>
+
+<script src="assets/js/admin.js"></script>
