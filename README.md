@@ -11,6 +11,9 @@ HTML/CSS/JavaScript **sans dépendance ni build** : il suffit d'ouvrir les fichi
 | `importation.html` | Importation (carte animée des routes, processus détaillé, FAQ) |
 | `contact.html` | Contact (formulaire + coordonnées) |
 | `vehicule.html` | **Fiche véhicule** — une page pour tout le catalogue (`?id=<identifiant>`) |
+| `mentions-legales.html` | Mentions légales (obligatoires, art. 6-III LCEN) |
+| `confidentialite.html` | Politique de confidentialité (RGPD) |
+| `cgv.html` | Conditions générales de vente et de service |
 | `admin.html` | **Panel d'édition du catalogue** (non référencé, non lié depuis le site) |
 
 ## Lancer le site
@@ -235,6 +238,48 @@ d'explication plutôt que les cartes (le reste de la page fonctionne normalement
 du « pas de base de données, pas de build ». Si le référencement de chaque annonce devient
 important, l'étape suivante est une **GitHub Action** qui régénère le HTML à chaque commit du
 JSON : même panel, même fichier, mais des cartes présentes dans la page servie.
+
+## Pages légales
+
+Trois pages, reliées depuis le pied de page de tout le site.
+
+### Ce qui reste à faire avant la mise en ligne
+Les mentions qui ne peuvent pas être devinées sont surlignées en jaune dans les pages,
+sous la forme <code>À COMPLÉTER</code>. Il y en a **treize** :
+
+| Page | À renseigner |
+|---|---|
+| Mentions légales | forme juridique, capital, SIREN/SIRET, RCS, TVA intracommunautaire, adresse e-mail, directeur de la publication, statut (mandataire ou revendeur), médiateur de la consommation |
+| Confidentialité | adresse e-mail de contact pour l'exercice des droits |
+| CGV | statut juridique, portée du droit de rétractation, garantie commerciale |
+
+Ces informations sont **obligatoires** : l'article 6-III de la loi n° 2004-575 (LCEN) impose
+l'identification de l'éditeur, et son absence est sanctionnée. Elles se reprennent de votre
+extrait Kbis ou de votre avis de situation SIRENE. Je ne les ai pas inventées : un SIRET
+fabriqué serait un faux.
+
+### Deux points qui demandent un arbitrage
+1. **Mandataire ou revendeur ?** Le statut change tout : qui doit la garantie légale de
+   conformité, qui est vendeur, comment la TVA s'applique. Les CGV posent les deux hypothèses
+   côte à côte ; il faut trancher et supprimer celle qui ne s'applique pas.
+2. **Droit de rétractation.** Un véhicule sourcé sur cahier des charges peut relever de
+   l'exception de l'article L221-28 3° du code de la consommation (bien personnalisé). C'est
+   une question d'espèce : à arbitrer avec un conseil.
+
+> Les CGV sont une **base structurée, pas un document validé**. Faites-les relire par un
+> professionnel du droit avant de les opposer à un client.
+
+### Cookies : il n'y en a pas
+Le site ne dépose **aucun cookie** chez le visiteur : pas de mesure d'audience, pas de traceur
+publicitaire. Aucun bandeau de consentement n'est donc nécessaire, et c'est écrit tel quel dans
+la politique de confidentialité.
+
+En revanche, l'affichage des pages déclenche des requêtes vers **Google Fonts**, **Pexels**,
+**iStock** et **GitHub Pages**, qui reçoivent de ce fait l'adresse IP du visiteur. C'est
+documenté honnêtement dans la politique de confidentialité. Pour supprimer le point le plus
+sensible (Google Fonts, sur lequel la jurisprudence européenne est sévère), il suffirait
+d'**héberger les polices dans `assets/`** au lieu de les charger depuis Google : c'est une
+demi-heure de travail et cela accélère aussi le premier rendu.
 
 ## À personnaliser
 1. **Vidéo du hero (accueil)** - `src` du `<video class="hero__video">` dans `index.html`.
