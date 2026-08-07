@@ -73,12 +73,13 @@ Toutes les paires de texte respectent WCAG AA (≥ 4,5:1) et les bordures de con
 
 ## Vidéo
 Le site intègre de la vidéo à trois endroits, toujours **muette, en boucle et sans contrôle** :
-- **hero de l'accueil** : **100 % vidéo**, un plan unique en plein cadre (quai de ferries,
-  voitures au premier plan).
-  > **A REGLER AVANT MISE EN LIGNE** - le fichier actuel est une *prévisualisation* iStock :
-  > il porte le **filigrane Getty**, ne fait que **768x432** (soit x3,3 d'agrandissement sur
-  > écran retina) et **n'est pas licencié**. Achetez le fichier HD sur iStock, hébergez-le, et
-  > remplacez le `src` du `<video class="hero__video">` dans `index.html`.
+- **hero de l'accueil** : **100 % vidéo**, un plan unique en plein cadre : un coupé américain
+  descendant la rampe d'un navire roulier à l'heure bleue. Fichier local
+  (`assets/video/hero.mp4`, 368 Ko, 1280x720, 6 s, sans piste audio).
+  > **A REMPLACER** - ce plan a été généré par IA (Kling) sur un **palier gratuit**. Il porte
+  > deux filigranes visibles, **VEED** en haut à droite et **KlingAI** en bas à droite, et la
+  > licence d'un palier gratuit ne couvre généralement pas l'usage commercial. Ré-exportez
+  > depuis un palier payant et remplacez `assets/video/hero.mp4` : rien d'autre ne bouge.
 - **galerie de l'accueil** : 3 tuiles animées (badge ▶) ;
 - **page Importation** : bande « Transport & suivi en direct » (logistique portuaire).
 
@@ -282,12 +283,17 @@ d'**héberger les polices dans `assets/`** au lieu de les charger depuis Google 
 demi-heure de travail et cela accélère aussi le premier rendu.
 
 ## À personnaliser
-1. **Vidéo du hero (accueil)** - `src` du `<video class="hero__video">` dans `index.html`.
-   Le clip actuel est un fichier de prévisualisation iStock à remplacer (voir l'encadré plus
-   haut). Si vous changez de plan, **revérifiez le contraste du texte** : le voile
-   (`.hero__scrim`) et l'étalonnage (`.hero__video { filter }`) sont calibrés pour un plan
-   très clair. Un plan sombre passera derrière un voile trop lourd ; les valeurs à remettre
-   sont notées en commentaire au-dessus de `.hero__scrim` dans `styles.css`.
+1. **Vidéo du hero (accueil)** - remplacez `assets/video/hero.mp4` (voir l'encadré plus haut).
+   Si vous changez de plan, **revérifiez le contraste du texte** : le voile (`.hero__scrim`) et
+   l'étalonnage (`.hero__video { filter }`) sont calibrés ensemble.
+   > Contre-intuitif, et vérifié à la mesure : le voile reste **lourd** même avec ce plan
+   > sombre. Le ciel couvert occupe tout le haut-gauche, donc le tiers gauche n'est pas
+   > sombre (luminance 117/255) alors que c'est là que se trouve toute la copie. Avec le
+   > voile « d'origine », l'eyebrow tombe à 2,68:1, sous le seuil. Ce qui a été neutralisé,
+   > c'est l'**étalonnage** (`brightness .80 -> 1.00`), pour que la vidéo garde sa propre
+   > lumière au lieu d'être écrasée.
+   > Contrastes mesurés sur les pixels rendus, seconde par seconde : nav 10,7 / eyebrow 6,1 /
+   > H1 8,5 / paragraphe 11,4. Tous au-dessus du seuil.
 2. **Liens leboncoin** - chaque annonce pointe pour l'instant vers `https://www.leboncoin.fr`.
    Renseignez l'URL réelle dans le champ « Lien de l'annonce leboncoin » du panel.
 3. **Formulaire de contact** - `contact.html` affiche une confirmation côté navigateur (démo).

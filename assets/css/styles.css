@@ -1181,7 +1181,7 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
    bandes navy. La photo dessous reste le repli si une vidéo ne démarre pas. */
 /* Vidéo du hero, plein cadre. Étalonnage léger pour l'accorder au bleu du site
    et empêcher le ciel de virer au blanc pur derrière le texte. */
-.hero__video { filter: saturate(.70) contrast(1.05) brightness(.80); }
+.hero__video { filter: saturate(.85) contrast(1.03) brightness(1.00); }
 
 .hero__video {
   position: absolute; inset: 0; z-index: 2;
