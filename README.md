@@ -245,19 +245,19 @@ JSON : même panel, même fichier, mais des cartes présentes dans la page servi
 Trois pages, reliées depuis le pied de page de tout le site.
 
 ### Ce qui reste à faire avant la mise en ligne
-Les mentions qui ne peuvent pas être devinées sont surlignées en jaune dans les pages,
-sous la forme <code>À COMPLÉTER</code>. Il y en a **treize** :
+L'identité de la société est renseignée (SIREN 994 734 788, SIRET 994 734 788 00015,
+TVA FR55 994 734 788, SARL au capital de 100 €, créée le 03/12/2025, immatriculée au RNE
+le 12/12/2025). Il reste **neuf** mentions surlignées <code>À COMPLÉTER</code> :
 
 | Page | À renseigner |
 |---|---|
-| Mentions légales | forme juridique, capital, SIREN/SIRET, RCS, TVA intracommunautaire, adresse e-mail, directeur de la publication, statut (mandataire ou revendeur), médiateur de la consommation |
+| Mentions légales | greffe d'immatriculation, adresse e-mail, directeur de la publication (le gérant), statut mandataire/revendeur, médiateur de la consommation |
 | Confidentialité | adresse e-mail de contact pour l'exercice des droits |
 | CGV | statut juridique, portée du droit de rétractation, garantie commerciale |
 
-Ces informations sont **obligatoires** : l'article 6-III de la loi n° 2004-575 (LCEN) impose
-l'identification de l'éditeur, et son absence est sanctionnée. Elles se reprennent de votre
-extrait Kbis ou de votre avis de situation SIRENE. Je ne les ai pas inventées : un SIRET
-fabriqué serait un faux.
+Le **code NAF n'est volontairement pas affiché** : il n'est pas obligatoire dans des mentions
+légales, et le code enregistré (71.12B, ingénierie) ne correspond pas à l'activité décrite sur
+le site. L'afficher signalerait l'écart à tout visiteur. Voir l'avertissement ci-dessous.
 
 ### Deux points qui demandent un arbitrage
 1. **Mandataire ou revendeur ?** Le statut change tout : qui doit la garantie légale de
