@@ -1,13 +1,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Véhicules disponibles · Lyra Motors · Import Europe & USA</title>
-<meta name="description" content="Découvrez notre sélection de véhicules importés : sportives, SUV & berlines premium, pick-up et modèles du quotidien. Chaque annonce est détaillée sur notre boutique leboncoin pro." />
+<title>Fiche véhicule · Lyra Motors</title>
+<meta name="description" content="Fiche détaillée du véhicule : photos, caractéristiques, prix clé en main et contact direct. Import Europe & USA par Lyra Motors." />
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/styles.css" />
 <script>document.documentElement.classList.add('js');</script>
+
 
 <!-- SPRITE -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -36,6 +37,7 @@
   <symbol id="car-sedan" viewBox="0 0 360 150"><path d="M16 114 L20 94 C42 89 64 87 84 85 L118 80 C130 58 152 50 186 50 C220 50 244 58 256 80 L320 86 C338 90 346 100 344 114 Z" fill="currentColor"/><path d="M118 80 C130 58 152 50 186 50 C220 50 244 58 256 80" fill="none" stroke="rgba(174,207,232,.6)" stroke-width="2.4"/><circle cx="92" cy="114" r="29" fill="#0B2740"/><circle cx="92" cy="114" r="29" fill="none" stroke="rgba(174,207,232,.6)" stroke-width="2"/><circle cx="92" cy="114" r="9" fill="none" stroke="rgba(174,207,232,.8)" stroke-width="2"/><circle cx="272" cy="114" r="29" fill="#0B2740"/><circle cx="272" cy="114" r="29" fill="none" stroke="rgba(174,207,232,.6)" stroke-width="2"/><circle cx="272" cy="114" r="9" fill="none" stroke="rgba(174,207,232,.8)" stroke-width="2"/></symbol>
 </defs></svg>
 
+
 <!-- HEADER -->
 <header class="site-header">
   <div class="container nav">
@@ -63,104 +65,30 @@
   <div class="mobile-menu__foot"><a href="contact.html" class="btn btn--accent btn--block btn--lg">Parler de mon projet <svg class="arw" width="16" height="16"><use href="#i-arrow"/></svg></a></div>
 </div>
 
-<main>
-  <!-- SUB-HERO -->
-  <section class="subhero subhero--split">
-    <div class="subhero__glow" aria-hidden="true"></div>
-    <div class="container">
-      <div class="subhero__grid">
-        <div>
-          <nav class="breadcrumb reveal"><a href="index.html">Accueil</a><span class="sep">/</span><span>Véhicules</span></nav>
-          <h1 class="reveal" style="--d:.05s">Nos véhicules disponibles <em class="hl serif-italic">à l'import</em></h1>
-          <p class="reveal" style="--d:.12s">Une sélection évolutive de modèles européens et américains. Chaque véhicule est présenté en détail (photos, historique et prix) sur notre boutique <b>leboncoin pro</b>. Un coup de cœur ? Un simple clic vous mène à l'annonce.</p>
-          <div class="reveal" style="--d:.18s;margin-top:1.75rem">
-            <span class="lbc-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h10"/></svg> Stock complet et mis à jour en temps réel sur leboncoin pro</span>
-          </div>
-        </div>
 
-        <aside class="subhero__aside reveal reveal--right" style="--d:.22s">
-          <h2>Ce qui est compris</h2>
-          <div class="aside-row">
-            <span class="aside-row__ic"><svg><use href="#i-shield"/></svg></span>
-            <span><span class="v">Véhicule vérifié</span><span class="k">Historique et inspection avant achat</span></span>
-          </div>
-          <div class="aside-row">
-            <span class="aside-row__ic"><svg><use href="#i-doc"/></svg></span>
-            <span><span class="v">Démarches incluses</span><span class="k">Douane, homologation, carte grise</span></span>
-          </div>
-          <div class="aside-row">
-            <span class="aside-row__ic"><svg><use href="#i-key"/></svg></span>
-            <span><span class="v">Livré chez vous</span><span class="k">Prêt à rouler, partout en France</span></span>
-          </div>
-          <div class="aside-row">
-            <span class="aside-row__ic"><svg><use href="#i-euro"/></svg></span>
-            <span><span class="v">Prix clé en main</span><span class="k">Tout compris, sans frais caché</span></span>
-          </div>
-        </aside>
-      </div>
+<main>
+  <section class="section" style="padding-top:clamp(6.5rem,5rem+6vw,9rem)">
+    <div class="container" id="fiche">
+      <p class="vgrid-vide">Chargement de la fiche…</p>
     </div>
   </section>
 
-  <!-- FILTRES + GRILLE -->
-  <section class="section watermark watermark--right" style="padding-top:clamp(2rem,1rem+3vw,3.5rem)">
+  <section class="section" id="aussi" hidden style="padding-top:0">
     <div class="container">
-      <div class="filters reveal">
-        <button class="filter is-active" data-filter="all">Tous <span class="count">11</span></button>
-        <button class="filter" data-filter="sport">Sportives & GT <span class="count">3</span></button>
-        <button class="filter" data-filter="premium">SUV & berlines <span class="count">3</span></button>
-        <button class="filter" data-filter="pickup">Pick-up & 4×4 <span class="count">3</span></button>
-        <button class="filter" data-filter="daily">Quotidien <span class="count">2</span></button>
-      </div>
-
-      <div class="startline reveal" aria-hidden="true"></div>
-
-      <div class="vehicles" id="grid-stock" data-stagger="0.06">
-        <p class="vgrid-vide">Chargement du catalogue…</p>
-      </div>
-
-      <noscript>
-        <p class="vgrid-vide">L'affichage du catalogue nécessite JavaScript.
-          <a href="contact.html">Écrivez-nous</a> et nous vous envoyons la liste à jour.</p>
-      </noscript>
-
-      <p class="lbc-note" style="margin-top:2.5rem">
-        <svg><use href="#i-tag"/></svg>
-        Chaque annonce renvoie vers notre boutique leboncoin pro, où figurent les photos complètes et l'historique du véhicule.
-      </p>
+      <header class="section-head reveal"><h2>Dans la même <em class="hl serif-italic">catégorie</em></h2></header>
+      <div class="minis" id="grid-aussi" data-stagger="0.06"></div>
     </div>
   </section>
 
   <div class="section-sep" aria-hidden="true"><i></i></div>
 
-  <!-- DISPONIBLES À L'IMPORTATION -->
-  <section class="section section--import watermark watermark--left" id="section-import" hidden>
-    <div class="container">
-      <header class="section-head reveal">
-        <p class="eyebrow">Sur commande</p>
-        <h2>Disponibles <em class="hl serif-italic">à l'importation</em></h2>
-        <p class="lead">Ces modèles ne sont pas dans notre stock : nous les sourçons pour vous à la demande, en Europe et aux États-Unis. Le prix affiché est une estimation clé en main, affinée une fois le véhicule identifié.</p>
-      </header>
-
-      <div class="import-steps reveal" data-stagger="0.06">
-        <span class="reveal"><b>01</b> Vous nous dites le modèle et le budget</span>
-        <span class="reveal"><b>02</b> Nous cherchons et vérifions sur place</span>
-        <span class="reveal"><b>03</b> Vous validez avant tout engagement</span>
-        <span class="reveal"><b>04</b> Transport, douane et carte grise inclus</span>
-      </div>
-
-      <div class="vehicles" id="grid-import" data-stagger="0.06"></div>
-    </div>
-  </section>
-
-  <!-- CTA -->
   <section class="cta">
     <div class="cta__glow" aria-hidden="true"></div>
     <div class="container">
       <div class="cta__inner reveal reveal--scale">
-        <p class="eyebrow center" style="justify-content:center;color:var(--accent-2)">Modèle introuvable ?</p>
-        <h2>Vous ne trouvez pas votre véhicule ? <em class="hl serif-italic">On va le chercher.</em></h2>
-        <p>Notre stock en ligne n'est qu'un aperçu. Décrivez-nous le modèle, la finition et le budget : nous partons le sourcer pour vous en Europe et aux États-Unis.</p>
-        <div class="cta__badges"><span>Recherche personnalisée</span><span>Véhicules vérifiés</span><span>Sans engagement</span></div>
+        <p class="eyebrow center" style="justify-content:center;color:var(--accent-2)">Une question ?</p>
+        <h2>Parlons de ce véhicule <em class="hl serif-italic">de vive voix.</em></h2>
+        <p>Un doute sur l'historique, le délai ou le financement ? Écrivez-nous, nous répondons vite et sans jargon.</p>
         <a href="contact.html" class="btn btn--accent btn--lg" data-magnetic>Parler de mon projet <svg class="arw" width="16" height="16"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
@@ -202,6 +130,7 @@
   </div>
 </footer>
 
+
 <script src="assets/js/main.js"></script>
 <script src="assets/js/vehicules-lib.js"></script>
-<script src="assets/js/vehicules.js"></script>
+<script src="assets/js/vehicule-detail.js"></script>

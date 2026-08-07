@@ -28,7 +28,8 @@
     data: null,       // contenu complet du fichier
     liste: [],        // raccourci vers data.vehicules
     indexEdite: -1,   // -1 = création
-    fichierPhoto: null,
+    fichiers: [],     // fichiers en attente d'envoi
+    photos: [],       // adresses des photos de l'annonce en cours
   };
 
   /* ---------- utilitaires ---------- */
@@ -180,7 +181,7 @@
   function verrouiller(auto) {
     jeton = null;
     clearTimeout(minuterie);
-    etat = { sha: null, data: null, liste: [], indexEdite: -1, fichierPhoto: null };
+    etat = { sha: null, data: null, liste: [], indexEdite: -1, fichiers: [], photos: [] };
     $("#p-list").hidden = true;
     $("#p-form").hidden = true;
     $("#b-lock").hidden = true;
@@ -257,7 +258,7 @@
     etat.liste.forEach((v, i) => {
       const el = document.createElement("div");
       el.className = "item" + (i === etat.indexEdite ? " is-editing" : "");
-      const src = urlPhoto(v.photo);
+      const src = urlPhoto((v.photos && v.photos[0]) || v.photo);
       const vign = src
         ? '<img src="' + esc(src) + '" alt="" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{className:\'ph\',textContent:\'?\'}))" />'
         : '<div class="ph">—</div>';
@@ -282,12 +283,63 @@
 
   const CHAMPS = ["statut", "categorie", "badge", "titre", "drapeau", "origine",
                   "annee", "km", "carburant", "boite", "prix", "prixMention",
-                  "lien", "delai", "photo"];
+                  "lien", "delai"];
 
   const BADGES = {
     sport: "Sportives & GT", premium: "SUV & berlines premium",
     pickup: "4×4 & pick-up", daily: "Quotidien",
   };
+
+  /* ---------- éditeur de photos ----------
+     La première photo sert de vignette dans la liste, les suivantes alimentent
+     la galerie de la fiche : d'où les flèches pour changer l'ordre. */
+
+  function rendrePhotos() {
+    const hote = $("#v-photos");
+    hote.textContent = "";
+    if (!etat.photos.length) {
+      hote.innerHTML = '<p class="hint">Aucune photo. La silhouette dessinée servira de repli.</p>';
+    }
+    etat.photos.forEach((ph, i) => {
+      const src = urlPhoto(ph);
+      const row = document.createElement("div");
+      row.className = "prow";
+      row.innerHTML =
+        (src ? '<img src="' + esc(src) + '" alt="" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{className:\'ph\',textContent:\'?\'}))" />'
+             : '<div class="ph">—</div>') +
+        '<input value="' + esc(ph) + '" data-i="' + i + '" spellcheck="false" placeholder="https://… ou assets/img/vehicules/photo.jpg" />' +
+        '<span class="pacts">' +
+          '<button type="button" title="Monter" data-up="' + i + '"' + (i === 0 ? " disabled" : "") + ">\u2191</button>" +
+          '<button type="button" title="Descendre" data-down="' + i + '"' + (i === etat.photos.length - 1 ? " disabled" : "") + ">\u2193</button>" +
+          '<button type="button" class="x" title="Retirer" data-x="' + i + '">\u2715</button>' +
+        "</span>";
+      hote.appendChild(row);
+    });
+
+    hote.querySelectorAll("input[data-i]").forEach((inp) =>
+      inp.addEventListener("change", () => {
+        etat.photos[parseInt(inp.dataset.i, 10)] = inp.value.trim();
+        rendrePhotos();
+      }));
+    const bouge = (de, vers) => {
+      const [x] = etat.photos.splice(de, 1);
+      etat.photos.splice(vers, 0, x);
+      rendrePhotos();
+    };
+    hote.querySelectorAll("[data-up]").forEach((b) =>
+      b.addEventListener("click", () => bouge(+b.dataset.up, +b.dataset.up - 1)));
+    hote.querySelectorAll("[data-down]").forEach((b) =>
+      b.addEventListener("click", () => bouge(+b.dataset.down, +b.dataset.down + 1)));
+    hote.querySelectorAll("[data-x]").forEach((b) =>
+      b.addEventListener("click", () => { etat.photos.splice(+b.dataset.x, 1); rendrePhotos(); }));
+  }
+
+  function rendreFile() {
+    const ul = $("#v-queue");
+    ul.hidden = !etat.fichiers.length;
+    ul.innerHTML = etat.fichiers.map((f) =>
+      "<li>" + esc(f.name) + " \u00b7 " + Math.round(f.size / 1024) + " Ko \u2014 sera envoy\u00e9 \u00e0 l'enregistrement</li>").join("");
+  }
 
   function basculerChamps() {
     const estImport = $("#v-statut").value === "import";
@@ -297,7 +349,7 @@
 
   function ouvrirFormulaire(i) {
     etat.indexEdite = typeof i === "number" ? i : -1;
-    etat.fichierPhoto = null;
+    etat.fichiers = [];
     $("#v-file").value = "";
     const v = etat.indexEdite >= 0 ? etat.liste[etat.indexEdite] : {
       statut: "stock", categorie: "sport", badge: BADGES.sport,
@@ -305,9 +357,10 @@
       lien: "https://www.leboncoin.fr",
     };
     CHAMPS.forEach((k) => { const el = $("#v-" + k); if (el) el.value = v[k] || ""; });
+    etat.photos = Array.isArray(v.photos) ? v.photos.slice() : (v.photo ? [v.photo] : []);
+    rendrePhotos(); rendreFile();
     $("#form-title").textContent = etat.indexEdite >= 0 ? "Modifier « " + (v.titre || "") + " »" : "Nouvelle annonce";
     basculerChamps();
-    majApercu(v.photo);
     tais("#log-form");
     $("#p-form").hidden = false;
     rendreListe();
@@ -317,19 +370,15 @@
   function fermerFormulaire() {
     $("#p-form").hidden = true;
     etat.indexEdite = -1;
-    etat.fichierPhoto = null;
+    etat.fichiers = [];
+    etat.photos = [];
     rendreListe();
-  }
-
-  function majApercu(p) {
-    const src = urlPhoto(p);
-    $("#preview-wrap").hidden = !src;
-    if (src) $("#preview").src = src;
   }
 
   function lireFormulaire() {
     const v = {};
     CHAMPS.forEach((k) => { const el = $("#v-" + k); if (el) v[k] = el.value.trim(); });
+    v.photos = etat.photos.filter(Boolean);
     v.id = (etat.indexEdite >= 0 && etat.liste[etat.indexEdite].id) || slug(v.titre);
     if (v.statut === "import") v.lien = ""; else v.delai = "";
     return v;
@@ -365,14 +414,14 @@
     let sauvegarde = null;
     try {
       // 1. photo jointe -> on la dépose d'abord, puis on pointe dessus
-      if (etat.fichierPhoto) {
-        const f = etat.fichierPhoto;
+      for (let k = 0; k < etat.fichiers.length; k++) {
+        const f = etat.fichiers[k];
         const ext = (f.name.split(".").pop() || "jpg").toLowerCase().replace(/[^a-z0-9]/g, "");
-        const chemin = "assets/img/vehicules/" + slug(v.titre) + "-" + Date.now() + "." + ext;
-        dit("#log-form", "Envoi de la photo…", "info");
-        occupe("Envoi de la photo…");
-        await ecrireFichier(chemin, await lireFichierB64(f), "Ajoute la photo de " + v.titre, null);
-        v.photo = chemin;
+        const chemin = "assets/img/vehicules/" + slug(v.titre) + "-" + Date.now() + "-" + k + "." + ext;
+        dit("#log-form", "Envoi de la photo " + (k + 1) + " sur " + etat.fichiers.length + "…", "info");
+        occupe("Envoi " + (k + 1) + "/" + etat.fichiers.length + "…");
+        await ecrireFichier(chemin, await lireFichierB64(f), "Ajoute une photo de " + v.titre, null);
+        v.photos.push(chemin);
       }
 
       // 2. mise à jour de la liste en mémoire (sauvegarde pour pouvoir revenir
@@ -398,7 +447,7 @@
       etat.sha = rep.content.sha;
 
       dit("#log-form", "Publié. La page véhicules affichera la modification dès que GitHub Pages aura reconstruit le site (comptez une à deux minutes).", "ok");
-      etat.fichierPhoto = null;
+      etat.fichiers = [];
       $("#v-file").value = "";
       fermerFormulaire();
     } catch (err) {
@@ -522,7 +571,6 @@
   $("#b-cancel").addEventListener("click", fermerFormulaire);
   $("#b-save").addEventListener("click", enregistrer);
   $("#v-statut").addEventListener("change", basculerChamps);
-  $("#v-photo").addEventListener("change", (e) => majApercu(e.target.value.trim()));
 
   $("#v-categorie").addEventListener("change", (e) => {
     // Confort : la pastille suit la catégorie tant qu'on ne l'a pas personnalisée.
@@ -530,20 +578,20 @@
     if (!b.value || Object.values(BADGES).indexOf(b.value) >= 0) b.value = BADGES[e.target.value] || "";
   });
 
+  $("#b-add-photo").addEventListener("click", () => { etat.photos.push(""); rendrePhotos(); });
+
   $("#v-file").addEventListener("change", (e) => {
-    const f = e.target.files && e.target.files[0];
-    etat.fichierPhoto = null;
-    if (!f) return;
-    if (f.size > 4 * 1024 * 1024) {
-      dit("#log-form", "Fichier trop lourd (" + Math.round(f.size / 1024 / 1024) + " Mo). Maximum 4 Mo.", "ko");
-      e.target.value = "";
-      return;
+    const choisis = Array.from(e.target.files || []);
+    const LIMITE = 4 * 1024 * 1024;
+    const trop = choisis.filter((f) => f.size > LIMITE);
+    if (trop.length) {
+      dit("#log-form", "Ignoré, plus de 4 Mo : " + trop.map((f) => f.name).join(", "), "ko");
+    } else {
+      tais("#log-form");
     }
-    etat.fichierPhoto = f;
-    tais("#log-form");
-    const lecteur = new FileReader();
-    lecteur.onload = () => { $("#preview").src = lecteur.result; $("#preview-wrap").hidden = false; };
-    lecteur.readAsDataURL(f);
+    etat.fichiers = etat.fichiers.concat(choisis.filter((f) => f.size <= LIMITE));
+    e.target.value = "";   // permet de re-choisir le même fichier
+    rendreFile();
   });
 
   /* ---------- démarrage ---------- */

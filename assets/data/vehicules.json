@@ -1,5 +1,5 @@
 {
-  "_lisezmoi": "Source unique des vehicules du site. Modifiable a la main ou via admin.html.",
+  "_lisezmoi": "Source unique des vehicules du site. Modifiable a la main ou via admin.html. photos[] : la premiere sert de vignette, les suivantes alimentent la galerie de la fiche vehicule.",
   "maj": "2026-08-07",
   "vehicules": [
     {
@@ -16,9 +16,11 @@
       "km": "18 500 km",
       "carburant": "Essence",
       "boite": "Auto",
-      "photo": "16284856/pexels-photo-16284856/free-photo-of-black-ford-mustang-on-street.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "16284856/pexels-photo-16284856/free-photo-of-black-ford-mustang-on-street.jpeg"
+      ]
     },
     {
       "id": "corvette-c8-stingray",
@@ -34,9 +36,11 @@
       "km": "9 400 km",
       "carburant": "Essence",
       "boite": "Auto",
-      "photo": "15677087/pexels-photo-15677087.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "15677087/pexels-photo-15677087.jpeg"
+      ]
     },
     {
       "id": "chevrolet-camaro-ss",
@@ -52,9 +56,11 @@
       "km": "16 900 km",
       "carburant": "Essence",
       "boite": "Auto",
-      "photo": "5975534/pexels-photo-5975534.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "5975534/pexels-photo-5975534.jpeg"
+      ]
     },
     {
       "id": "audi-rs6-avant",
@@ -70,9 +76,11 @@
       "km": "21 000 km",
       "carburant": "Essence",
       "boite": "Tiptronic",
-      "photo": "12351517/pexels-photo-12351517.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "12351517/pexels-photo-12351517.jpeg"
+      ]
     },
     {
       "id": "mercedes-amg-c63",
@@ -88,9 +96,11 @@
       "km": "28 500 km",
       "carburant": "Essence",
       "boite": "Auto",
-      "photo": "14667492/pexels-photo-14667492.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "14667492/pexels-photo-14667492.jpeg"
+      ]
     },
     {
       "id": "range-rover-sport-hse",
@@ -106,9 +116,11 @@
       "km": "26 900 km",
       "carburant": "Diesel",
       "boite": "Auto",
-      "photo": "18340797/pexels-photo-18340797.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "18340797/pexels-photo-18340797.jpeg"
+      ]
     },
     {
       "id": "dodge-ram-1500-limited",
@@ -124,9 +136,11 @@
       "km": "22 400 km",
       "carburant": "Essence/E85",
       "boite": "Auto",
-      "photo": "15643000/pexels-photo-15643000/free-photo-of-dodge-ram-1500-long-exposure.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "15643000/pexels-photo-15643000/free-photo-of-dodge-ram-1500-long-exposure.jpeg"
+      ]
     },
     {
       "id": "ford-f-150-lariat",
@@ -142,9 +156,11 @@
       "km": "34 100 km",
       "carburant": "Essence",
       "boite": "Auto",
-      "photo": "12021856/pexels-photo-12021856.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "12021856/pexels-photo-12021856.jpeg"
+      ]
     },
     {
       "id": "toyota-hilux-invincible",
@@ -160,9 +176,11 @@
       "km": "14 200 km",
       "carburant": "Diesel",
       "boite": "Auto",
-      "photo": "16521273/pexels-photo-16521273/free-photo-of-pick-up-truck-on-field.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "16521273/pexels-photo-16521273/free-photo-of-pick-up-truck-on-field.jpeg"
+      ]
     },
     {
       "id": "volkswagen-golf-8-gti",
@@ -178,9 +196,11 @@
       "km": "19 700 km",
       "carburant": "Essence",
       "boite": "DSG",
-      "photo": "20809165/pexels-photo-20809165/free-photo-of-raindrops-on-black-volkswagen-golf-gti.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "20809165/pexels-photo-20809165/free-photo-of-raindrops-on-black-volkswagen-golf-gti.jpeg"
+      ]
     },
     {
       "id": "mini-cooper-s",
@@ -196,9 +216,11 @@
       "km": "12 600 km",
       "carburant": "Essence",
       "boite": "Auto",
-      "photo": "36261943/pexels-photo-36261943/free-photo-of-row-of-mini-cooper-cars-parked-outdoors.jpeg",
       "lien": "https://www.leboncoin.fr",
-      "delai": ""
+      "delai": "",
+      "photos": [
+        "36261943/pexels-photo-36261943/free-photo-of-row-of-mini-cooper-cars-parked-outdoors.jpeg"
+      ]
     },
     {
       "id": "dodge-challenger-scat-pack",
@@ -214,9 +236,12 @@
       "km": "Selon arrivage",
       "carburant": "Essence",
       "boite": "Auto",
-      "photo": "29098431/pexels-photo-29098431/free-photo-of-sleek-red-dodge-challenger-at-gas-station.jpeg",
       "lien": "",
-      "delai": "8 à 12 semaines"
+      "delai": "8 à 12 semaines",
+      "photos": [
+        "29098431/pexels-photo-29098431/free-photo-of-sleek-red-dodge-challenger-at-gas-station.jpeg",
+        "20706252/pexels-photo-20706252.jpeg"
+      ]
     },
     {
       "id": "chevrolet-camaro-zl1",
@@ -232,9 +257,12 @@
       "km": "Selon arrivage",
       "carburant": "Essence",
       "boite": "Auto",
-      "photo": "29098298/pexels-photo-29098298.jpeg",
       "lien": "",
-      "delai": "8 à 12 semaines"
+      "delai": "8 à 12 semaines",
+      "photos": [
+        "29098298/pexels-photo-29098298.jpeg",
+        "29098285/pexels-photo-29098285.jpeg"
+      ]
     },
     {
       "id": "chevrolet-corvette-c7-z06",
@@ -250,9 +278,11 @@
       "km": "Selon arrivage",
       "carburant": "Essence",
       "boite": "Manuelle",
-      "photo": "9843580/pexels-photo-9843580.jpeg",
       "lien": "",
-      "delai": "10 à 14 semaines"
+      "delai": "10 à 14 semaines",
+      "photos": [
+        "9843580/pexels-photo-9843580.jpeg"
+      ]
     },
     {
       "id": "jeep-wrangler-rubicon",
@@ -268,9 +298,12 @@
       "km": "Selon arrivage",
       "carburant": "Essence",
       "boite": "Auto",
-      "photo": "30788038/pexels-photo-30788038/free-photo-of-black-jeep-wrangler-on-forest-pathway.jpeg",
       "lien": "",
-      "delai": "8 à 12 semaines"
+      "delai": "8 à 12 semaines",
+      "photos": [
+        "30788038/pexels-photo-30788038/free-photo-of-black-jeep-wrangler-on-forest-pathway.jpeg",
+        "3248777/pexels-photo-3248777.jpeg"
+      ]
     }
   ]
 }

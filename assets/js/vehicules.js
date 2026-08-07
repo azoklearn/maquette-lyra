@@ -15,22 +15,7 @@
   const gridImport = $("#grid-import");
   if (!gridStock && !gridImport) return;
 
-  const PEXELS = "https://images.pexels.com/photos/";
-
-  /* Une photo peut être :
-     - une URL complète        -> https://...
-     - un fichier du dépôt     -> assets/img/vehicules/ma-photo.jpg
-     - un chemin Pexels        -> 16284856/pexels-photo-16284856.jpeg
-     Les deux premiers passent tels quels, le troisième est complété. */
-  function photoURL(p) {
-    if (!p) return "";
-    if (/^https?:\/\//.test(p) || p.startsWith("assets/")) return p;
-    return PEXELS + p + "?auto=compress&cs=tinysrgb&fit=crop&w=800&h=600";
-  }
-
-  const esc = (s) =>
-    String(s == null ? "" : s).replace(/[&<>"']/g, (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const L = window.LYRA;
 
   /* Illustration de repli, identique à celle des cartes d'origine : si la photo
      ne charge pas (lien mort, hors-ligne), la silhouette reste et rien n'est cassé. */
@@ -47,15 +32,16 @@
 
   function specLi(icone, valeur) {
     if (!valeur) return "";
-    return '<li><svg><use href="#i-' + icone + '"/></svg>' + esc(valeur) + "</li>";
+    return '<li><svg><use href="#i-' + icone + '"/></svg>' + L.esc(valeur) + "</li>";
   }
 
   function carte(v, i) {
     const estImport = v.statut === "import";
+    const clichés = L.photos(v);
 
     const prix = v.prix
-      ? '<span class="vcard__price">' + esc(v.prix) + " €" +
-        (v.prixMention ? "<small>" + esc(v.prixMention) + "</small>" : "") + "</span>"
+      ? '<span class="vcard__price">' + L.esc(v.prix) + " €" +
+        (v.prixMention ? "<small>" + L.esc(v.prixMention) + "</small>" : "") + "</span>"
       : '<span class="vcard__price vcard__price--ask">Sur devis</span>';
 
     // Stock : le bouton leboncoin reste l'action principale, inchangé.
@@ -64,13 +50,18 @@
       ? '<a class="lbc lbc--ask" href="contact.html?vehicule=' + encodeURIComponent(v.titre) + '">' +
           '<span class="lbc__label">Demander ce véhicule<small>recherche lancée sous 48 h</small></span>' +
           '<span class="lbc__ico"><svg width="16" height="16"><use href="#i-arrow-r"/></svg></span></a>'
-      : '<a class="lbc" href="' + esc(v.lien || "https://www.leboncoin.fr") + '" target="_blank" rel="noopener">' +
+      : '<a class="lbc" href="' + L.esc(v.lien || "https://www.leboncoin.fr") + '" target="_blank" rel="noopener">' +
           '<span class="lbc__label">Voir l\'annonce<small>sur leboncoin pro</small></span>' +
           '<span class="lbc__ico"><svg width="16" height="16"><use href="#i-arrow"/></svg></span></a>';
 
     const delai = estImport && v.delai
       ? '<span class="vcard__delai"><svg width="14" height="14"><use href="#i-clock"/></svg>' +
-        esc(v.delai) + "</span>"
+        L.esc(v.delai) + "</span>"
+      : "";
+
+    // Compteur de photos : signale qu'il y a une galerie derrière la vignette.
+    const compteur = clichés.length > 1
+      ? '<span class="vcard__shots"><svg width="13" height="13"><use href="#i-shots"/></svg>' + clichés.length + "</span>"
       : "";
 
     const art = document.createElement("article");
@@ -80,22 +71,27 @@
     art.innerHTML =
       '<div class="vcard__media">' +
         fallbackSVG(TEINTES[i % TEINTES.length]) +
-        '<span class="vcard__badge">' + esc(v.badge || "") + "</span>" +
-        '<button class="vcard__fav" aria-label="Ajouter aux favoris"><svg width="18" height="18"><use href="#i-heart"/></svg></button>' +
-        '<span class="vcard__origin"><span class="flag">' + esc(v.drapeau || "") + "</span> " + esc(v.origine || "") + "</span>" +
+        '<span class="vcard__badge">' + L.esc(v.badge || "") + "</span>" +
+        compteur +
+        '<span class="vcard__origin"><span class="flag">' + L.esc(v.drapeau || "") + "</span> " + L.esc(v.origine || "") + "</span>" +
       "</div>" +
       '<div class="vcard__body">' +
-        '<div class="vcard__title"><h3>' + esc(v.titre) + "</h3>" + prix + "</div>" +
+        '<div class="vcard__title">' +
+          // Lien "étiré" : c'est ce <a> qui rend la carte entière cliquable, via
+          // son ::after en position absolue. On évite ainsi d'imbriquer le bouton
+          // leboncoin dans un autre lien, ce que le HTML interdit.
+          '<h3><a class="vcard__link" href="' + L.esc(L.lienFiche(v)) + '">' + L.esc(v.titre) + "</a></h3>" + prix +
+        "</div>" +
         '<ul class="vcard__specs">' +
           specLi("cal", v.annee) + specLi("gauge", v.km) +
           specLi("fuel", v.carburant) + specLi("cog", v.boite) +
         "</ul>" +
         delai +
-        '<div class="vcard__foot">' + action + "</div>" +
+        '<div class="vcard__foot">' + action + L.boutonWhatsApp(v) + "</div>" +
       "</div>";
 
     // La photo est ajoutée par-dessus la silhouette, et se retire seule si elle échoue.
-    const src = photoURL(v.photo);
+    const src = L.photoURL(clichés[0], 800, 600);
     if (src) {
       const img = document.createElement("img");
       img.className = "photo"; img.loading = "lazy"; img.decoding = "async";

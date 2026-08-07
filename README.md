@@ -10,6 +10,7 @@ HTML/CSS/JavaScript **sans dépendance ni build** : il suffit d'ouvrir les fichi
 | `vehicules.html` | Véhicules (stock filtrable + CTA leboncoin, et section « à l'importation ») |
 | `importation.html` | Importation (carte animée des routes, processus détaillé, FAQ) |
 | `contact.html` | Contact (formulaire + coordonnées) |
+| `vehicule.html` | **Fiche véhicule** — une page pour tout le catalogue (`?id=<identifiant>`) |
 | `admin.html` | **Panel d'édition du catalogue** (non référencé, non lié depuis le site) |
 
 ## Lancer le site
@@ -30,9 +31,11 @@ lyra/
 │  ├─ data/
 │  │  └─ vehicules.json   → LE CATALOGUE : source unique des annonces
 │  ├─ js/
-│  │  ├─ main.js          → nav, animations au scroll, filtres, formulaire…
-│  │  ├─ vehicules.js     → construit les deux grilles à partir du JSON
-│  │  └─ admin.js         → panel : lit et écrit le JSON via l'API GitHub
+│  │  ├─ main.js           → nav, animations au scroll, filtres, formulaire…
+│  │  ├─ vehicules-lib.js  → photos, WhatsApp, liens : partagé liste + fiche
+│  │  ├─ vehicules.js      → construit les deux grilles à partir du JSON
+│  │  ├─ vehicule-detail.js→ construit la fiche d'un véhicule
+│  │  └─ admin.js          → panel : lit et écrit le JSON via l'API GitHub
 │  └─ img/
 │     ├─ logo.png         → écusson Lyra Motors (header + footer)
 │     ├─ favicon.svg      → favicon accordé à l'écusson
@@ -131,6 +134,41 @@ Les compteurs des filtres (`Tous 11`, `Sportives & GT 3`…) se calculent tout s
 chiffre écrit en dur à corriger quand vous ajoutez une annonce. Une catégorie devenue vide
 disparaît de la barre de filtres.
 
+### Fiche véhicule
+Chaque carte est **cliquable** et mène à `vehicule.html?id=<identifiant>` : une seule page sert
+tout le catalogue. On y trouve la galerie, les caractéristiques, le prix, les deux boutons
+d'action et trois suggestions de la même catégorie.
+
+Techniquement, la carte est rendue cliquable par un **lien « étiré »** : le `<a>` du titre couvre
+toute la carte via son `::after`. C'est ce qui permet de garder les boutons *Voir l'annonce* et
+*WhatsApp* fonctionnels **sans imbriquer un lien dans un autre**, ce que le HTML interdit.
+
+### Plusieurs photos par annonce
+`photos` est une **liste**. La première sert de vignette dans la grille, les suivantes
+alimentent la galerie de la fiche (vignettes cliquables sous l'image principale). Un compteur
+apparaît sur la vignette dès qu'il y a plus d'une photo.
+
+Sur les annonces **à l'importation**, la galerie est légendée « Exemples de ce modèle » : ces
+véhicules n'existent pas encore en stock, les photos illustrent le modèle et pas un exemplaire
+précis. Sans cette mention, deux teintes différentes dans la même galerie passeraient pour une
+erreur.
+
+### WhatsApp
+Chaque véhicule porte un bouton WhatsApp vers le **06 19 78 67 52**, avec un message déjà
+rédigé, **différent selon la disponibilité** :
+
+| Statut | Message pré-rempli |
+|---|---|
+| `stock` | « Bonjour Lyra Motors, je suis intéressé par la **Ford Mustang GT** à **62 900 €** vue sur votre site. Est-elle toujours disponible ? » |
+| `import` | « Bonjour Lyra Motors, je souhaite faire importer une **Camaro ZL1** (estimation **72 000 €** vue sur votre site). Pouvez-vous me dire ce qui est possible et sous quel délai ? » |
+
+Le numéro se change à un seul endroit : la constante `WHATSAPP` en haut de
+`assets/js/vehicules-lib.js` (format international sans espace ni `+` : le `0` initial saute,
+`06 19 78 67 52` devient `33619786752`).
+
+Le bouton est un **contour navy avec le logo vert** plutôt qu'un aplat vert : la couleur de la
+marque WhatsApp jurerait avec la palette, alors que le logo suffit à le rendre reconnaissable.
+
 ### Utiliser le panel
 1. Ouvrez `admin.html` (par exemple `https://<votre-site>/admin.html`). La page est en
    `noindex` et **n'est liée depuis aucune page du site**.
@@ -147,10 +185,12 @@ Le jeton GitHub se crée dans *Settings → Developer settings → Personal acce
 - **Permissions → Repository → Contents** : `Read and write`
 - **rien d'autre**, et une expiration courte (30 à 90 jours)
 
-Une photo peut être fournie de trois façons, au choix :
+Les photos s'ajoutent en liste, dans l'ordre que vous voulez (flèches ↑ ↓ pour réordonner,
+✕ pour retirer). **La première est la vignette.** Chaque ligne accepte :
 - une **adresse d'image** (`https://…`) ;
-- un **fichier envoyé depuis le panel** : il est déposé dans `assets/img/vehicules/` (4 Mo max) ;
-- un **chemin Pexels** (`16284856/pexels-photo-16284856.jpeg`), comme les visuels de démonstration.
+- un **chemin Pexels** (`16284856/pexels-photo-16284856.jpeg`), comme les visuels de démonstration ;
+- ou vous envoyez **plusieurs fichiers d'un coup** depuis l'ordinateur : ils sont déposés dans
+  `assets/img/vehicules/` à l'enregistrement (JPEG/PNG/WebP, 4 Mo par fichier).
 
 ### Sécurité : comment le jeton est protégé
 
