@@ -75,15 +75,21 @@ Toutes les paires de texte respectent WCAG AA (≥ 4,5:1) et les bordures de con
 Le site intègre de la vidéo à trois endroits, toujours **muette, en boucle et sans contrôle** :
 - **hero de l'accueil** : **100 % vidéo**, un plan unique. Une Ford Mustang sort de la cale d'un
   navire roulier, descend la rampe et s'avance jusqu'au premier plan, à l'heure bleue.
-  Fichier local `assets/video/hero.mp4` : 1280x720, 11 s, 24 i/s, sans piste audio, **640 Ko**
-  (compressé depuis 6,2 Mo, écart visuel 1,96/255, imperceptible).
+  Fichier local `assets/video/hero.mp4` : 1280x720, **8 s**, 24 i/s, sans piste audio, **508 Ko**.
+  Le rush faisait 11 s et 6,2 Mo : les **3 dernières secondes sont coupées** (la voiture y devenait
+  trop grosse et mangeait le cadre) et le tout est recompressé depuis l'original, sans double
+  encodage.
   Ce plan est **généré par IA**, sans filigrane.
   > **La vidéo ne boucle pas.** Elle se joue une fois puis reste figée sur sa dernière image,
   > le gros plan sur la calandre. C'est un plan d'arrivée : le rejouer ferait un saut visible à
   > chaque reprise. L'attribut `loop` est donc absent de la balise, et `main.js` empêche toute
   > relance au retour d'onglet (`if (!hero.ended)`).
-  > Contrastes relevés sur les pixels rendus, seconde par seconde sur les 11 s :
-  > nav 11,3 / eyebrow 6,1 / H1 10,7 / paragraphe 12,4. Seuils : 4,5 / 4,5 / 3 / 4,5.
+  > L'image d'arrêt est donc celle de la 8e seconde : voiture à mi-distance, rampe et navire
+  > encore lisibles derrière. Mieux équilibrée que le gros plan final.
+  > Contrastes relevés sur les pixels rendus, seconde par seconde :
+  > nav 11,5 / eyebrow 6,4 / H1 5,8 / paragraphe 11,4. Seuils : 4,5 / 4,5 / 3 / 4,5.
+  > Si vous remplacez la vidéo, **refaites cette mesure** : le cadrage change pendant le plan,
+  > un nouveau clip invalide complètement les chiffres ci-dessus.
 - **galerie de l'accueil** : 3 tuiles animées (badge ▶) ;
 - **page Importation** : bande « Transport & suivi en direct » (logistique portuaire).
 
