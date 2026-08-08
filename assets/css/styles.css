@@ -1190,6 +1190,35 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
   transition: opacity 1.4s var(--ease);
   pointer-events: none;
 }
+/* Recadrage sur écran étroit.
+   La vidéo est en 16/9 ; sur un téléphone en portrait, `cover` n'en laisse voir
+   qu'environ un quart de la largeur. Centré, ce quart tombe sur le quai vide :
+   la voiture, qui évolue entre 59 % et 81 % de la largeur du cadre, sort de
+   l'écran. On décale donc le point d'ancrage vers la droite, d'autant plus que
+   l'écran est étroit. La valeur privilégie l'IMAGE D'ARRÊT, celle qui reste
+   affichée une fois le plan terminé. */
+@media (max-width: 900px) { .hero__video { object-position: 66% center; } }
+
+/* Voile du hero sur écran étroit.
+   Le voile de bureau est DIAGONAL : il assombrit la gauche, là où se trouve la
+   copie sur un écran large. Sur téléphone le texte occupe toute la largeur, et
+   la diagonale ne le couvre plus : mesuré, l'eyebrow tombait à 3,46 et le titre
+   à 2,67, sous les seuils. On remplace donc la diagonale par un empilement
+   vertical : un voile uniforme léger, un dégradé haut pour l'en-tête, et un bas
+   renforcé sous le bloc de texte.
+   Toutes les couches partagent la même couleur, leur ordre n'a donc aucune
+   incidence sur le résultat composité.
+   Le palier est le MEME que celui du recadrage (900px) : à 768px, en tablette
+   portrait, la diagonale échouait aussi (eyebrow 2,98 / titre 2,40). */
+@media (max-width: 900px) {
+  .hero__scrim {
+    background:
+      linear-gradient(rgba(11,39,64,0.34), rgba(11,39,64,0.34)),
+      linear-gradient(to bottom, rgba(11,39,64,0.60) 0%, rgba(11,39,64,0) 45%),
+      linear-gradient(to top, rgba(11,39,64,0.86) 0%, rgba(11,39,64,0.64) 52%, rgba(11,39,64,0) 90%);
+  }
+}
+@media (max-width: 560px) { .hero__video { object-position: 72% center; } }
 .hero__video.is-playing { opacity: 1; }
 
 /* Bande vidéo pleine largeur */

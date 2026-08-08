@@ -94,6 +94,16 @@ Le site intègre de la vidéo à trois endroits, toujours **muette, en boucle et
   > nav 11,5 / eyebrow 6,4 / H1 7,5 / paragraphe 11,9. Seuils : 4,5 / 4,5 / 3 / 4,5.
   > Le H1 descend de 8,5 à 7,5 en fin de plan, la voiture entrant dans sa zone : c'est mesuré
   > et ça reste très au-dessus du seuil.
+  > **Recadrage sur écran étroit.** La vidéo est en 16/9 ; sur un téléphone en portrait,
+  > `object-fit: cover` n'en laisse voir qu'environ **un quart de la largeur**. Centré, ce quart
+  > tombe sur le quai vide : la voiture, qui évolue entre 59 % et 81 % du cadre, sortait de
+  > l'écran. Le point d'ancrage est donc décalé à droite, d'autant plus que l'écran est étroit
+  > (66 % sous 900 px, 72 % sous 560 px), en privilégiant l'**image d'arrêt**.
+  > Le **voile change aussi de forme** : celui de bureau est diagonal et protège la gauche, là où
+  > se trouve la copie sur un écran large. Sous 900 px le texte occupe toute la largeur et la
+  > diagonale ne le couvre plus. Mesuré sur téléphone : eyebrow 3,46 et titre 2,67, sous les
+  > seuils ; en tablette portrait, 2,98 et 2,40. Un empilement vertical le remplace, et rétablit
+  > eyebrow 5,4 / titre 7,7 / paragraphe 9,4 dans les deux formats.
 - **galerie de l'accueil** : 3 tuiles animées (badge ▶) ;
 - **page Importation** : bande « Transport & suivi en direct » (logistique portuaire).
 
