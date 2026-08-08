@@ -75,22 +75,19 @@ Toutes les paires de texte respectent WCAG AA (≥ 4,5:1) et les bordures de con
 Le site intègre de la vidéo à trois endroits, toujours **muette, en boucle et sans contrôle** :
 - **hero de l'accueil** : **100 % vidéo**, un plan unique. Une Ford Mustang sort de la cale d'un
   navire roulier, descend la rampe et s'avance jusqu'au premier plan, à l'heure bleue.
-  Fichier local `assets/video/hero.mp4` : 1280x720, **9 s**, 24 i/s, sans piste audio, **564 Ko**.
-  Le rush faisait 11 s et 6,2 Mo : les **2 dernières secondes sont coupées** (la voiture y devenait
-  trop grosse et mangeait le cadre) et le tout est recompressé depuis l'original, sans double
-  encodage.
-  Ce plan est **généré par IA**, sans filigrane.
-  > **La vidéo ne boucle pas.** Elle se joue une fois puis reste figée sur sa dernière image,
-  > le gros plan sur la calandre. C'est un plan d'arrivée : le rejouer ferait un saut visible à
-  > chaque reprise. L'attribut `loop` est donc absent de la balise, et `main.js` empêche toute
-  > relance au retour d'onglet (`if (!hero.ended)`).
-  > L'image d'arrêt est donc celle de la 9e seconde : la Mustang de trois quarts, poney bien
-  > lisible, encore sur la rampe avec le navire derrière, et le quai dégagé à gauche.
-  > Contrastes mesurés image par image (grade + trois couches du voile appliqués hors navigateur,
-  > le seek du lecteur vidéo n'étant pas fiable pour ça) :
-  > nav 11,5 / eyebrow 6,4 / H1 7,0 / paragraphe 11,9. Seuils : 4,5 / 4,5 / 3 / 4,5.
-  > Si vous remplacez la vidéo, **refaites cette mesure** : le cadrage change pendant le plan,
-  > un nouveau clip invalide complètement les chiffres ci-dessus.
+  Fichier local `assets/video/hero.mp4` : 1280x720, **9,6 s**, 24 i/s, sans piste audio, **596 Ko**
+  (rush d'origine : 11 s et 6,2 Mo).
+  > **Décélération avant l'arrêt.** La voiture *accélère* du début à la fin du rush (mouvement
+  > mesuré : 0,24 au début, 1,39 au pic). Couper net donnait donc un arrêt brutal : le véhicule
+  > prenait de la vitesse au moment de se figer.
+  > Le plan est coupé à l'image 190, puis les **1,2 dernières secondes sont ralenties**
+  > progressivement (`setpts` avec une rampe quadratique, raccord sans à-coup).
+  > Un simple ralenti dupliquerait des images et saccaderait ; le filtre `minterpolate`
+  > fabrique donc de **vraies images intermédiaires**. Vérifié : 0 image dupliquée, et le
+  > mouvement apparent tombe de **0,85 à 0,10** sur la dernière image, soit huit fois moins.
+  > La commande complète figure dans le message du commit correspondant.
+  > Contrastes mesurés hors navigateur, image par image :
+  > nav 11,5 / eyebrow 6,4 / H1 8,5 / paragraphe 11,9. Seuils : 4,5 / 4,5 / 3 / 4,5.
 - **galerie de l'accueil** : 3 tuiles animées (badge ▶) ;
 - **page Importation** : bande « Transport & suivi en direct » (logistique portuaire).
 
