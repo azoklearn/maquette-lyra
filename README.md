@@ -75,8 +75,8 @@ Toutes les paires de texte respectent WCAG AA (≥ 4,5:1) et les bordures de con
 Le site intègre de la vidéo à trois endroits, toujours **muette, en boucle et sans contrôle** :
 - **hero de l'accueil** : **100 % vidéo**, un plan unique. Une Ford Mustang sort de la cale d'un
   navire roulier, descend la rampe et s'avance jusqu'au premier plan, à l'heure bleue.
-  Fichier local `assets/video/hero.mp4` : 1280x720, **8 s**, 24 i/s, sans piste audio, **508 Ko**.
-  Le rush faisait 11 s et 6,2 Mo : les **3 dernières secondes sont coupées** (la voiture y devenait
+  Fichier local `assets/video/hero.mp4` : 1280x720, **9 s**, 24 i/s, sans piste audio, **564 Ko**.
+  Le rush faisait 11 s et 6,2 Mo : les **2 dernières secondes sont coupées** (la voiture y devenait
   trop grosse et mangeait le cadre) et le tout est recompressé depuis l'original, sans double
   encodage.
   Ce plan est **généré par IA**, sans filigrane.
@@ -84,10 +84,11 @@ Le site intègre de la vidéo à trois endroits, toujours **muette, en boucle et
   > le gros plan sur la calandre. C'est un plan d'arrivée : le rejouer ferait un saut visible à
   > chaque reprise. L'attribut `loop` est donc absent de la balise, et `main.js` empêche toute
   > relance au retour d'onglet (`if (!hero.ended)`).
-  > L'image d'arrêt est donc celle de la 8e seconde : voiture à mi-distance, rampe et navire
-  > encore lisibles derrière. Mieux équilibrée que le gros plan final.
-  > Contrastes relevés sur les pixels rendus, seconde par seconde :
-  > nav 11,5 / eyebrow 6,4 / H1 5,8 / paragraphe 11,4. Seuils : 4,5 / 4,5 / 3 / 4,5.
+  > L'image d'arrêt est donc celle de la 9e seconde : la Mustang de trois quarts, poney bien
+  > lisible, encore sur la rampe avec le navire derrière, et le quai dégagé à gauche.
+  > Contrastes mesurés image par image (grade + trois couches du voile appliqués hors navigateur,
+  > le seek du lecteur vidéo n'étant pas fiable pour ça) :
+  > nav 11,5 / eyebrow 6,4 / H1 7,0 / paragraphe 11,9. Seuils : 4,5 / 4,5 / 3 / 4,5.
   > Si vous remplacez la vidéo, **refaites cette mesure** : le cadrage change pendant le plan,
   > un nouveau clip invalide complètement les chiffres ci-dessus.
 - **galerie de l'accueil** : 3 tuiles animées (badge ▶) ;
