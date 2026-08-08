@@ -1,6 +1,6 @@
 {
   "_lisezmoi": "Source unique des vehicules du site. Modifiable a la main ou via admin.html. photos[] : la premiere sert de vignette, les suivantes alimentent la galerie de la fiche vehicule.",
-  "maj": "2026-08-07",
+  "maj": "2026-08-08",
   "vehicules": [
     {
       "id": "ford-mustang-gt",
@@ -16,6 +16,7 @@
       "km": "18 500 km",
       "carburant": "Essence",
       "boite": "Auto",
+      "motorisation": "V8 5.0 Coyote · 450 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -36,6 +37,7 @@
       "km": "9 400 km",
       "carburant": "Essence",
       "boite": "Auto",
+      "motorisation": "V8 6.2 atmosphérique · 502 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -56,6 +58,7 @@
       "km": "16 900 km",
       "carburant": "Essence",
       "boite": "Auto",
+      "motorisation": "V8 6.2 LT1 · 453 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -76,6 +79,7 @@
       "km": "21 000 km",
       "carburant": "Essence",
       "boite": "Tiptronic",
+      "motorisation": "V8 4.0 TFSI biturbo · 600 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -96,6 +100,7 @@
       "km": "28 500 km",
       "carburant": "Essence",
       "boite": "Auto",
+      "motorisation": "V8 4.0 biturbo · 476 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -116,6 +121,7 @@
       "km": "26 900 km",
       "carburant": "Diesel",
       "boite": "Auto",
+      "motorisation": "6 cyl. 3.0 D350 · 350 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -136,6 +142,7 @@
       "km": "22 400 km",
       "carburant": "Essence/E85",
       "boite": "Auto",
+      "motorisation": "V8 5.7 HEMI · 401 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -156,6 +163,7 @@
       "km": "34 100 km",
       "carburant": "Essence",
       "boite": "Auto",
+      "motorisation": "V6 3.5 EcoBoost · 400 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -176,6 +184,7 @@
       "km": "14 200 km",
       "carburant": "Diesel",
       "boite": "Auto",
+      "motorisation": "4 cyl. 2.8 D-4D · 204 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -196,6 +205,7 @@
       "km": "19 700 km",
       "carburant": "Essence",
       "boite": "DSG",
+      "motorisation": "4 cyl. 2.0 TSI · 245 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -216,6 +226,7 @@
       "km": "12 600 km",
       "carburant": "Essence",
       "boite": "Auto",
+      "motorisation": "4 cyl. 2.0 turbo · 178 ch",
       "lien": "https://www.leboncoin.fr",
       "delai": "",
       "photos": [
@@ -236,6 +247,7 @@
       "km": "Selon arrivage",
       "carburant": "Essence",
       "boite": "Auto",
+      "motorisation": "V8 6.4 HEMI · 485 ch",
       "lien": "",
       "delai": "8 à 12 semaines",
       "photos": [
@@ -257,6 +269,7 @@
       "km": "Selon arrivage",
       "carburant": "Essence",
       "boite": "Auto",
+      "motorisation": "V8 6.2 compressé · 659 ch",
       "lien": "",
       "delai": "8 à 12 semaines",
       "photos": [
@@ -278,6 +291,7 @@
       "km": "Selon arrivage",
       "carburant": "Essence",
       "boite": "Manuelle",
+      "motorisation": "V8 6.2 compressé · 659 ch",
       "lien": "",
       "delai": "10 à 14 semaines",
       "photos": [
@@ -298,6 +312,7 @@
       "km": "Selon arrivage",
       "carburant": "Essence",
       "boite": "Auto",
+      "motorisation": "4 cyl. 2.0 turbo · 272 ch",
       "lien": "",
       "delai": "8 à 12 semaines",
       "photos": [

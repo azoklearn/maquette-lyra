@@ -282,7 +282,7 @@
   /* ---------- formulaire ---------- */
 
   const CHAMPS = ["statut", "categorie", "badge", "titre", "drapeau", "origine",
-                  "annee", "km", "carburant", "boite", "prix", "prixMention",
+                  "annee", "km", "carburant", "boite", "motorisation", "prix", "prixMention",
                   "lien", "delai"];
 
   const BADGES = {

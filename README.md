@@ -73,13 +73,17 @@ Toutes les paires de texte respectent WCAG AA (≥ 4,5:1) et les bordures de con
 
 ## Vidéo
 Le site intègre de la vidéo à trois endroits, toujours **muette, en boucle et sans contrôle** :
-- **hero de l'accueil** : **100 % vidéo**, un plan unique en plein cadre : un coupé américain
-  descendant la rampe d'un navire roulier à l'heure bleue. Fichier local
-  (`assets/video/hero.mp4`, 368 Ko, 1280x720, 6 s, sans piste audio).
-  > **A REMPLACER** - ce plan a été généré par IA (Kling) sur un **palier gratuit**. Il porte
-  > deux filigranes visibles, **VEED** en haut à droite et **KlingAI** en bas à droite, et la
-  > licence d'un palier gratuit ne couvre généralement pas l'usage commercial. Ré-exportez
-  > depuis un palier payant et remplacez `assets/video/hero.mp4` : rien d'autre ne bouge.
+- **hero de l'accueil** : **100 % vidéo**, un plan unique. Une Ford Mustang sort de la cale d'un
+  navire roulier, descend la rampe et s'avance jusqu'au premier plan, à l'heure bleue.
+  Fichier local `assets/video/hero.mp4` : 1280x720, 11 s, 24 i/s, sans piste audio, **640 Ko**
+  (compressé depuis 6,2 Mo, écart visuel 1,96/255, imperceptible).
+  Ce plan est **généré par IA**, sans filigrane.
+  > **La vidéo ne boucle pas.** Elle se joue une fois puis reste figée sur sa dernière image,
+  > le gros plan sur la calandre. C'est un plan d'arrivée : le rejouer ferait un saut visible à
+  > chaque reprise. L'attribut `loop` est donc absent de la balise, et `main.js` empêche toute
+  > relance au retour d'onglet (`if (!hero.ended)`).
+  > Contrastes relevés sur les pixels rendus, seconde par seconde sur les 11 s :
+  > nav 11,3 / eyebrow 6,1 / H1 10,7 / paragraphe 12,4. Seuils : 4,5 / 4,5 / 3 / 4,5.
 - **galerie de l'accueil** : 3 tuiles animées (badge ▶) ;
 - **page Importation** : bande « Transport & suivi en direct » (logistique portuaire).
 
@@ -142,6 +146,10 @@ disparaît de la barre de filtres.
 Chaque carte est **cliquable** et mène à `vehicule.html?id=<identifiant>` : une seule page sert
 tout le catalogue. On y trouve la galerie, les caractéristiques, le prix, les deux boutons
 d'action et trois suggestions de la même catégorie.
+
+Les caractéristiques affichées, dans l'ordre : année, kilométrage, **motorisation**, carburant,
+boîte, provenance. Une ligne vide dans le JSON n'est **pas** affichée : la fiche ne montre
+jamais un champ à blanc.
 
 Techniquement, la carte est rendue cliquable par un **lien « étiré »** : le `<a>` du titre couvre
 toute la carte via son `::after`. C'est ce qui permet de garder les boutons *Voir l'annonce* et

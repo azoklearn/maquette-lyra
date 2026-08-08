@@ -103,6 +103,7 @@
           '<div class="fspecs">' +
             specLigne("cal", "Année", v.annee) +
             specLigne("gauge", "Kilométrage", v.km) +
+            specLigne("engine", "Motorisation", v.motorisation) +
             specLigne("fuel", "Carburant", v.carburant) +
             specLigne("cog", "Boîte", v.boite) +
             specLigne("pin", "Provenance", v.origine) +

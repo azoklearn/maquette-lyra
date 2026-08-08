@@ -289,13 +289,18 @@
     };
 
     if (hero) {
+      /* Le hero se joue UNE SEULE FOIS puis reste figé sur sa dernière image :
+         c'est un plan d'arrivée, le rejouer en boucle n'aurait pas de sens et
+         ferait un saut visible à chaque reprise. */
       hero.addEventListener("playing", () => hero.classList.add("is-playing"), { once: true });
       hero.addEventListener("error", () => hero.remove());
+      hero.addEventListener("ended", () => hero.classList.add("is-ended"), { once: true });
       start(hero);
-      // Économie : on coupe la vidéo quand l'onglet passe en arrière-plan
+      // Économie : on coupe la vidéo quand l'onglet passe en arrière-plan.
+      // Si elle est déjà terminée, on ne la relance surtout pas.
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) hero.pause();
-        else if (hero.isConnected) start(hero);
+        else if (hero.isConnected && !hero.ended) start(hero);
       });
     }
 
