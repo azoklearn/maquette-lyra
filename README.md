@@ -75,19 +75,25 @@ Toutes les paires de texte respectent WCAG AA (≥ 4,5:1) et les bordures de con
 Le site intègre de la vidéo à trois endroits, toujours **muette, en boucle et sans contrôle** :
 - **hero de l'accueil** : **100 % vidéo**, un plan unique. Une Ford Mustang sort de la cale d'un
   navire roulier, descend la rampe et s'avance jusqu'au premier plan, à l'heure bleue.
-  Fichier local `assets/video/hero.mp4` : 1280x720, **9,6 s**, 24 i/s, sans piste audio, **596 Ko**
-  (rush d'origine : 11 s et 6,2 Mo).
-  > **Décélération avant l'arrêt.** La voiture *accélère* du début à la fin du rush (mouvement
-  > mesuré : 0,24 au début, 1,39 au pic). Couper net donnait donc un arrêt brutal : le véhicule
-  > prenait de la vitesse au moment de se figer.
-  > Le plan est coupé à l'image 190, puis les **1,2 dernières secondes sont ralenties**
-  > progressivement (`setpts` avec une rampe quadratique, raccord sans à-coup).
-  > Un simple ralenti dupliquerait des images et saccaderait ; le filtre `minterpolate`
-  > fabrique donc de **vraies images intermédiaires**. Vérifié : 0 image dupliquée, et le
-  > mouvement apparent tombe de **0,85 à 0,10** sur la dernière image, soit huit fois moins.
-  > La commande complète figure dans le message du commit correspondant.
+  Fichier local `assets/video/hero.mp4` : 1280x720, **11 s**, 24 i/s, sans piste audio, **716 Ko**
+  (rush d'origine : 11 s et 6,2 Mo). Le plan s'arrête **au bas de la rampe**, roues avant sur le
+  quai, poney bien lisible.
+  > **Le montage temporel n'est pas linéaire, et c'est voulu.** Dans le rush, la voiture
+  > *accélère* du début à la fin (mouvement mesuré : 0,24 au départ, 1,39 au pic). Couper net
+  > figeait donc un véhicule en pleine accélération, ce qui donnait un arrêt brutal.
+  > Deux réglages corrigent ça :
+  > 1. l'**approche est jouée à x1,3**. Elle est lente et lointaine, l'accélération ne s'y voit
+  >    pas, et elle libère les secondes nécessaires au freinage ;
+  > 2. les **1,7 dernières secondes ralentissent** progressivement jusqu'à 19 % de la vitesse
+  >    normale (`setpts`, rampe quadratique, vitesse continue au raccord).
+  > Un ralenti par simple `setpts` duplique des images et saccade : la mesure donnait une
+  > alternance 0,0 / 0,6 entre images consécutives. Le filtre `minterpolate` fabrique donc de
+  > **vraies images intermédiaires**. Vérifié : **0 image dupliquée**, mouvement final **0,26**
+  > contre 0,85 sur une coupe sèche. La commande complète est dans le message du commit.
   > Contrastes mesurés hors navigateur, image par image :
-  > nav 11,5 / eyebrow 6,4 / H1 8,5 / paragraphe 11,9. Seuils : 4,5 / 4,5 / 3 / 4,5.
+  > nav 11,5 / eyebrow 6,4 / H1 7,5 / paragraphe 11,9. Seuils : 4,5 / 4,5 / 3 / 4,5.
+  > Le H1 descend de 8,5 à 7,5 en fin de plan, la voiture entrant dans sa zone : c'est mesuré
+  > et ça reste très au-dessus du seuil.
 - **galerie de l'accueil** : 3 tuiles animées (badge ▶) ;
 - **page Importation** : bande « Transport & suivi en direct » (logistique portuaire).
 
