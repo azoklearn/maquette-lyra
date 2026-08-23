@@ -422,7 +422,14 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
    ===================================================================== */
 .hero {
   position: relative;
-  min-height: min(100svh, 900px);
+  /* Le hero occupe TOUTE la hauteur de la fenetre.
+     Il etait plafonne a 900px : au-dela, la section suivante (fond clair)
+     remontait dans le premier ecran et formait une bande claire sous la video.
+     Mesure a 1920x1200 : 300px de bande ; a 2560x1440 : 540px.
+     Le 100vh sert de repli pour les navigateurs sans unites svh ; la ligne
+     suivante l'ecrase partout ailleurs. */
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
