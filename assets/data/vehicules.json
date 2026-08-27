@@ -3,27 +3,6 @@
   "maj": "2026-08-27",
   "vehicules": [
     {
-      "id": "mercedes-amg-c63",
-      "statut": "stock",
-      "titre": "Mercedes-AMG C63",
-      "categorie": "premium",
-      "badge": "SUV & berlines",
-      "drapeau": "🇩🇪",
-      "origine": "Allemagne",
-      "prix": "78 900",
-      "prixMention": "clé en main",
-      "annee": "2021",
-      "km": "28 500 km",
-      "carburant": "Essence",
-      "boite": "Auto",
-      "motorisation": "V8 4.0 biturbo · 476 ch",
-      "lien": "https://www.leboncoin.fr",
-      "delai": "",
-      "photos": [
-        "14667492/pexels-photo-14667492.jpeg"
-      ]
-    },
-    {
       "id": "range-rover-sport-hse",
       "statut": "stock",
       "titre": "Range Rover Sport HSE",
