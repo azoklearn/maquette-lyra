@@ -3,27 +3,6 @@
   "maj": "2026-08-08",
   "vehicules": [
     {
-      "id": "corvette-c8-stingray",
-      "statut": "stock",
-      "titre": "Corvette C8 Stingray",
-      "categorie": "sport",
-      "badge": "Sportives & GT",
-      "drapeau": "🇺🇸",
-      "origine": "États-Unis",
-      "prix": "99 900",
-      "prixMention": "clé en main",
-      "annee": "2023",
-      "km": "9 400 km",
-      "carburant": "Essence",
-      "boite": "Auto",
-      "motorisation": "V8 6.2 atmosphérique · 502 ch",
-      "lien": "https://www.leboncoin.fr",
-      "delai": "",
-      "photos": [
-        "15677087/pexels-photo-15677087.jpeg"
-      ]
-    },
-    {
       "id": "chevrolet-camaro-ss",
       "statut": "stock",
       "titre": "Chevrolet Camaro SS",
