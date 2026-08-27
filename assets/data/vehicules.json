@@ -3,27 +3,6 @@
   "maj": "2026-08-08",
   "vehicules": [
     {
-      "id": "ford-mustang-gt",
-      "statut": "stock",
-      "titre": "Ford Mustang GT",
-      "categorie": "sport",
-      "badge": "Sportives & GT",
-      "drapeau": "🇺🇸",
-      "origine": "États-Unis",
-      "prix": "62 900",
-      "prixMention": "clé en main",
-      "annee": "2022",
-      "km": "18 500 km",
-      "carburant": "Essence",
-      "boite": "Auto",
-      "motorisation": "V8 5.0 Coyote · 450 ch",
-      "lien": "https://www.leboncoin.fr",
-      "delai": "",
-      "photos": [
-        "16284856/pexels-photo-16284856/free-photo-of-black-ford-mustang-on-street.jpeg"
-      ]
-    },
-    {
       "id": "corvette-c8-stingray",
       "statut": "stock",
       "titre": "Corvette C8 Stingray",
