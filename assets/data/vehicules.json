@@ -273,7 +273,13 @@
       "prixMention": "clé en main",
       "lien": "https://www.leboncoin.fr/ad/voitures/3249132012",
       "delai": "",
-      "photos": [],
+      "photos": [
+        "assets/img/vehicules/ford-ranger-wildtrak-super-cab-1787824445009-0.jpeg",
+        "assets/img/vehicules/ford-ranger-wildtrak-super-cab-1787824446607-1.jpeg",
+        "assets/img/vehicules/ford-ranger-wildtrak-super-cab-1787824448515-2.jpeg",
+        "assets/img/vehicules/ford-ranger-wildtrak-super-cab-1787824450140-3.jpeg",
+        "assets/img/vehicules/ford-ranger-wildtrak-super-cab-1787824451820-4.jpeg"
+      ],
       "id": "ford-ranger-wildtrak-super-cab"
     }
   ]
