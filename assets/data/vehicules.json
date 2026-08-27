@@ -3,27 +3,6 @@
   "maj": "2026-08-27",
   "vehicules": [
     {
-      "id": "volkswagen-golf-8-gti",
-      "statut": "stock",
-      "titre": "Volkswagen Golf 8 GTI",
-      "categorie": "daily",
-      "badge": "Quotidien",
-      "drapeau": "🇩🇪",
-      "origine": "Allemagne",
-      "prix": "35 900",
-      "prixMention": "clé en main",
-      "annee": "2022",
-      "km": "19 700 km",
-      "carburant": "Essence",
-      "boite": "DSG",
-      "motorisation": "4 cyl. 2.0 TSI · 245 ch",
-      "lien": "https://www.leboncoin.fr",
-      "delai": "",
-      "photos": [
-        "20809165/pexels-photo-20809165/free-photo-of-raindrops-on-black-volkswagen-golf-gti.jpeg"
-      ]
-    },
-    {
       "id": "mini-cooper-s",
       "statut": "stock",
       "titre": "MINI Cooper S",
