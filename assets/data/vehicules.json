@@ -1,6 +1,6 @@
 {
   "_lisezmoi": "Source unique des vehicules du site. Modifiable a la main ou via admin.html. photos[] : la premiere sert de vignette, les suivantes alimentent la galerie de la fiche vehicule.",
-  "maj": "2026-08-08",
+  "maj": "2026-08-27",
   "vehicules": [
     {
       "id": "audi-rs6-avant",
@@ -256,6 +256,25 @@
         "30788038/pexels-photo-30788038/free-photo-of-black-jeep-wrangler-on-forest-pathway.jpeg",
         "3248777/pexels-photo-3248777.jpeg"
       ]
+    },
+    {
+      "statut": "stock",
+      "categorie": "pickup",
+      "badge": "4×4 & pick-up",
+      "titre": "Ford Ranger Wildtrak Super Cab",
+      "drapeau": "",
+      "origine": "France",
+      "annee": "2020",
+      "km": "78000",
+      "carburant": "Diesel",
+      "boite": "Manuelle",
+      "motorisation": "2.0 EcoBlue 213ch",
+      "prix": "27900",
+      "prixMention": "clé en main",
+      "lien": "https://www.leboncoin.fr/ad/voitures/3249132012",
+      "delai": "",
+      "photos": [],
+      "id": "ford-ranger-wildtrak-super-cab"
     }
   ]
 }
