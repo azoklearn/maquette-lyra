@@ -3,27 +3,6 @@
   "maj": "2026-08-27",
   "vehicules": [
     {
-      "id": "ford-f-150-lariat",
-      "statut": "stock",
-      "titre": "Ford F-150 Lariat",
-      "categorie": "pickup",
-      "badge": "Pick-up & 4×4",
-      "drapeau": "🇺🇸",
-      "origine": "États-Unis",
-      "prix": "67 500",
-      "prixMention": "clé en main",
-      "annee": "2021",
-      "km": "34 100 km",
-      "carburant": "Essence",
-      "boite": "Auto",
-      "motorisation": "V6 3.5 EcoBoost · 400 ch",
-      "lien": "https://www.leboncoin.fr",
-      "delai": "",
-      "photos": [
-        "12021856/pexels-photo-12021856.jpeg"
-      ]
-    },
-    {
       "id": "toyota-hilux-invincible",
       "statut": "stock",
       "titre": "Toyota Hilux Invincible",
