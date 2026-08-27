@@ -222,6 +222,31 @@
         "assets/img/vehicules/peugeot-5008-1787824889920-3.jpeg"
       ],
       "id": "peugeot-5008"
+    },
+    {
+      "statut": "stock",
+      "categorie": "premium",
+      "badge": "SUV & berlines premium",
+      "titre": "Peugeot 5008",
+      "drapeau": "🇺🇸",
+      "origine": "France",
+      "annee": "2018",
+      "km": "147 450 Km",
+      "carburant": "Diesel",
+      "boite": "Manuelle",
+      "motorisation": "1.5 BlueHdi 130 ch",
+      "prix": "13 500",
+      "prixMention": "clé en main",
+      "lien": "https://www.leboncoin.fr/ad/voitures/3244665447",
+      "delai": "",
+      "photos": [
+        "assets/img/vehicules/peugeot-5008-1787825164168-0.jpeg",
+        "assets/img/vehicules/peugeot-5008-1787825166116-1.jpeg",
+        "assets/img/vehicules/peugeot-5008-1787825167685-2.jpeg",
+        "assets/img/vehicules/peugeot-5008-1787825169309-3.jpeg",
+        "assets/img/vehicules/peugeot-5008-1787825170782-4.jpeg"
+      ],
+      "id": "peugeot-5008"
     }
   ]
 }
