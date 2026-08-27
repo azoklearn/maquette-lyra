@@ -3,27 +3,6 @@
   "maj": "2026-08-27",
   "vehicules": [
     {
-      "id": "audi-rs6-avant",
-      "statut": "stock",
-      "titre": "Audi RS6 Avant",
-      "categorie": "premium",
-      "badge": "SUV & berlines",
-      "drapeau": "🇩🇪",
-      "origine": "Allemagne",
-      "prix": "129 900",
-      "prixMention": "clé en main",
-      "annee": "2022",
-      "km": "21 000 km",
-      "carburant": "Essence",
-      "boite": "Tiptronic",
-      "motorisation": "V8 4.0 TFSI biturbo · 600 ch",
-      "lien": "https://www.leboncoin.fr",
-      "delai": "",
-      "photos": [
-        "12351517/pexels-photo-12351517.jpeg"
-      ]
-    },
-    {
       "id": "mercedes-amg-c63",
       "statut": "stock",
       "titre": "Mercedes-AMG C63",
