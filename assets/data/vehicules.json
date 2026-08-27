@@ -3,27 +3,6 @@
   "maj": "2026-08-27",
   "vehicules": [
     {
-      "id": "range-rover-sport-hse",
-      "statut": "stock",
-      "titre": "Range Rover Sport HSE",
-      "categorie": "premium",
-      "badge": "SUV & berlines",
-      "drapeau": "🇬🇧",
-      "origine": "Royaume-Uni",
-      "prix": "92 500",
-      "prixMention": "clé en main",
-      "annee": "2022",
-      "km": "26 900 km",
-      "carburant": "Diesel",
-      "boite": "Auto",
-      "motorisation": "6 cyl. 3.0 D350 · 350 ch",
-      "lien": "https://www.leboncoin.fr",
-      "delai": "",
-      "photos": [
-        "18340797/pexels-photo-18340797.jpeg"
-      ]
-    },
-    {
       "id": "dodge-ram-1500-limited",
       "statut": "stock",
       "titre": "Dodge RAM 1500 Limited",
