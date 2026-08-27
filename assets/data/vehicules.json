@@ -3,27 +3,6 @@
   "maj": "2026-08-08",
   "vehicules": [
     {
-      "id": "chevrolet-camaro-ss",
-      "statut": "stock",
-      "titre": "Chevrolet Camaro SS",
-      "categorie": "sport",
-      "badge": "Sportives & GT",
-      "drapeau": "🇺🇸",
-      "origine": "États-Unis",
-      "prix": "54 900",
-      "prixMention": "clé en main",
-      "annee": "2022",
-      "km": "16 900 km",
-      "carburant": "Essence",
-      "boite": "Auto",
-      "motorisation": "V8 6.2 LT1 · 453 ch",
-      "lien": "https://www.leboncoin.fr",
-      "delai": "",
-      "photos": [
-        "5975534/pexels-photo-5975534.jpeg"
-      ]
-    },
-    {
       "id": "audi-rs6-avant",
       "statut": "stock",
       "titre": "Audi RS6 Avant",
