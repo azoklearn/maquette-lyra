@@ -40,7 +40,7 @@
     const clichés = L.photos(v);
 
     const prix = v.prix
-      ? '<span class="vcard__price">' + L.esc(v.prix) + " €" +
+      ? '<span class="vcard__price">' + L.esc(L.prix(v)) + " €" +
         (v.prixMention ? "<small>" + L.esc(v.prixMention) + "</small>" : "") + "</span>"
       : '<span class="vcard__price vcard__price--ask">Sur devis</span>';
 

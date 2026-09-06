@@ -379,7 +379,19 @@
     const v = {};
     CHAMPS.forEach((k) => { const el = $("#v-" + k); if (el) v[k] = el.value.trim(); });
     v.photos = etat.photos.filter(Boolean);
-    v.id = (etat.indexEdite >= 0 && etat.liste[etat.indexEdite].id) || slug(v.titre);
+    /* Identifiant stable : conserve tel quel a la modification. A la creation il
+       derive du titre, avec un suffixe numerique si ce titre existe deja : deux
+       "Peugeot 5008" doivent avoir deux fiches, pas une seule fiche pour deux
+       voitures. Sans cela la seconde annonce n'etait jamais atteignable. */
+    if (etat.indexEdite >= 0 && etat.liste[etat.indexEdite].id) {
+      v.id = etat.liste[etat.indexEdite].id;
+    } else {
+      const base = slug(v.titre);
+      const pris = new Set(etat.liste.map((x) => x.id));
+      let id = base, n = 2;
+      while (pris.has(id)) id = base + "-" + (n++);
+      v.id = id;
+    }
     if (v.statut === "import") v.lien = ""; else v.delai = "";
     return v;
   }

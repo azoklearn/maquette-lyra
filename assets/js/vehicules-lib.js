@@ -37,18 +37,28 @@ window.LYRA = (function () {
      encore, on lance une recherche). Le prix est repris pour que le vendeur
      sache tout de suite de quelle annonce on parle. */
   function messageWhatsApp(v) {
-    const prix = v.prix ? v.prix + " €" : "prix sur devis";
+    const libelle = v.prix ? prix(v) + " €" : "prix sur devis";
     if (v.statut === "import") {
       return "Bonjour Lyra Motors, je souhaite faire importer une " + v.titre +
-             " (estimation " + prix + " vue sur votre site). " +
+             " (estimation " + libelle + " vue sur votre site). " +
              "Pouvez-vous me dire ce qui est possible et sous quel délai ?";
     }
     return "Bonjour Lyra Motors, je suis intéressé par la " + v.titre +
-           " à " + prix + " vue sur votre site. Est-elle toujours disponible ?";
+           " à " + libelle + " vue sur votre site. Est-elle toujours disponible ?";
   }
 
   function lienWhatsApp(v) {
     return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(messageWhatsApp(v));
+  }
+
+  /* Le prix est saisi librement dans le panel : "27900", "27 900", "Selon arrivage".
+     Un nombre nu recoit des separateurs de milliers a l'affichage, pour que
+     "27900 €" et "14 990 €" ne cohabitent pas sur la meme grille. Tout ce qui
+     n'est pas un nombre nu est rendu tel quel. */
+  function prix(v) {
+    const brut = String(v.prix == null ? "" : v.prix).trim();
+    if (!/^\d+$/.test(brut)) return brut;
+    return brut.replace(/\B(?=(\d{3})+(?!\d))/g, "\u202f");
   }
 
   const lienFiche = (v) => "vehicule.html?id=" + encodeURIComponent(v.id);
@@ -67,5 +77,5 @@ window.LYRA = (function () {
            ICONE_WA + "<span>WhatsApp</span></a>";
   }
 
-  return { WHATSAPP, photoURL, photos, esc, messageWhatsApp, lienWhatsApp, lienFiche, boutonWhatsApp };
+  return { WHATSAPP, photoURL, photos, esc, prix, messageWhatsApp, lienWhatsApp, lienFiche, boutonWhatsApp };
 })();

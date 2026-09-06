@@ -63,7 +63,7 @@
       : "";
 
     const prix = v.prix
-      ? '<p class="fprix">' + L.esc(v.prix) + ' <span>€</span>' +
+      ? '<p class="fprix">' + L.esc(L.prix(v)) + ' <span>€</span>' +
         (v.prixMention ? '<small>' + L.esc(v.prixMention) + "</small>" : "") + "</p>"
       : '<p class="fprix fprix--ask">Prix sur devis</p>';
 
@@ -140,7 +140,7 @@
         return '<a class="mini" href="' + L.esc(L.lienFiche(x)) + '">' +
           '<span class="mini__ph">' + (p ? '<img src="' + L.esc(L.photoURL(p, 400, 300)) + '" alt="" loading="lazy" />' : "") + "</span>" +
           '<span class="mini__t">' + L.esc(x.titre) + "</span>" +
-          '<span class="mini__p">' + (x.prix ? L.esc(x.prix) + " €" : "Sur devis") +
+          '<span class="mini__p">' + (x.prix ? L.esc(L.prix(x)) + " €" : "Sur devis") +
           (x.statut === "import" ? " · à l'importation" : "") + "</span></a>";
       }).join("");
     }
