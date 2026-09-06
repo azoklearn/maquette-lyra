@@ -698,6 +698,10 @@ body.menu-open .mobile-menu a.m-link { opacity: 1; transform: none; }
 .subhero .container { position: relative; z-index: 1; }
 .subhero h1 { max-width: 18ch; margin: 1.25rem 0 1.25rem; }
 .subhero p { color: var(--ink-soft); font-size: var(--fs-lead); max-width: 56ch; }
+/* Un lien dans le chapeau doit se voir comme un lien : l'ink-soft du paragraphe
+   l'aurait rendu invisible. Accent foncé + soulignement, comme partout sur fond clair. */
+.subhero p a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.subhero p a:hover { text-decoration-thickness: 2px; }
 /* Sub-hero en deux colonnes : texte à gauche, encart de repères à droite */
 .subhero--split .subhero__grid {
   display: grid; grid-template-columns: 1.25fr 0.75fr;

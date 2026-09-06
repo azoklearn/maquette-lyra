@@ -159,7 +159,7 @@ admin.html  --(API GitHub)-->  assets/data/vehicules.json  --(fetch)-->  vehicul
 
 | `statut` | Section | Bouton |
 |---|---|---|
-| `stock` | *Nos véhicules disponibles à l'import* | **Voir l'annonce** → leboncoin |
+| `stock` | *Déjà importés, disponibles en France* (en tête de page) | **Voir l'annonce** → leboncoin |
 | `import` | *Disponibles à l'importation* | **Demander ce véhicule** → contact pré-rempli |
 
 Les compteurs des filtres (`Tous 11`, `Sportives & GT 3`…) se calculent tout seuls : plus de
