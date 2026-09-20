@@ -1,6 +1,6 @@
 {
   "_lisezmoi": "Source unique des vehicules du site. Modifiable a la main ou via admin.html. photos[] : la premiere sert de vignette, les suivantes alimentent la galerie de la fiche vehicule.",
-  "maj": "2026-08-27",
+  "maj": "2026-09-20",
   "vehicules": [
     {
       "id": "dodge-challenger-scat-pack",
@@ -163,6 +163,32 @@
         "assets/img/vehicules/peugeot-5008-1787825170782-4.jpeg"
       ],
       "id": "peugeot-5008-2"
+    },
+    {
+      "statut": "stock",
+      "categorie": "pickup",
+      "badge": "4×4 & pick-up",
+      "titre": "MITSUBISHI L200 BLACK COLLECTION",
+      "drapeau": "",
+      "origine": "France",
+      "annee": "2019",
+      "km": "130 000 Km",
+      "carburant": "Diesel",
+      "boite": "Manuelle",
+      "motorisation": "2.4 DI-D . 181 CH",
+      "prix": "22 000",
+      "prixMention": "clé en main",
+      "lien": "https://www.leboncoin.fr",
+      "delai": "",
+      "photos": [
+        "assets/img/vehicules/mitsubishi-l200-black-collection-1789925127148-0.jpg",
+        "assets/img/vehicules/mitsubishi-l200-black-collection-1789925129200-1.jpg",
+        "assets/img/vehicules/mitsubishi-l200-black-collection-1789925130775-2.jpg",
+        "assets/img/vehicules/mitsubishi-l200-black-collection-1789925132617-3.heic",
+        "assets/img/vehicules/mitsubishi-l200-black-collection-1789925134853-4.heic",
+        "assets/img/vehicules/mitsubishi-l200-black-collection-1789925136872-5.heic"
+      ],
+      "id": "mitsubishi-l200-black-collection"
     }
   ]
 }
